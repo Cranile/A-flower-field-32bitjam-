@@ -1,0 +1,11 @@
+[gd_resource type="CubeMesh" load_steps=2 format=2]
+
+[sub_resource type="SpatialMaterial" id=20]
+emission_enabled = true
+emission = Color( 0.980392, 1, 0.54902, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[resource]
+material = SubResource( 20 )

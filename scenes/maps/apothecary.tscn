@@ -1,0 +1,390 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/scene.gd" type="Script" id=3]
+[ext_resource path="res://scenes/apothecary_shelve.tscn" type="PackedScene" id=4]
+[ext_resource path="res://shaders/brown.tres" type="Material" id=5]
+[ext_resource path="res://post_process/pp_dither.tres" type="Material" id=6]
+[ext_resource path="res://shaders/lamp_glow.tres" type="CubeMesh" id=7]
+[ext_resource path="res://shaders/black.tres" type="Material" id=8]
+[ext_resource path="res://shaders/dark_brown.tres" type="Material" id=9]
+[ext_resource path="res://shaders/gray.tres" type="Material" id=10]
+[ext_resource path="res://scenes/door_short.tscn" type="PackedScene" id=11]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.568627, 0.568627, 0.568627, 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 8.52095, 0.155543, 8.75355 )
+
+[sub_resource type="PlaneMesh" id=3]
+
+[sub_resource type="BoxShape" id=23]
+extents = Vector3( 1, 0.1, 1 )
+
+[sub_resource type="PlaneMesh" id=4]
+
+[sub_resource type="BoxShape" id=26]
+extents = Vector3( 5, 1.7, 0.8 )
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+albedo_color = Color( 1, 0.996078, 0, 0.137255 )
+
+[sub_resource type="CylinderMesh" id=8]
+material = SubResource( 7 )
+top_radius = 0.541
+bottom_radius = 27.696
+height = 29.554
+radial_segments = 12
+
+[sub_resource type="CubeMesh" id=18]
+
+[sub_resource type="BoxShape" id=24]
+
+[sub_resource type="CubeMesh" id=19]
+
+[sub_resource type="CubeMesh" id=20]
+
+[sub_resource type="PlaneMesh" id=21]
+
+[sub_resource type="SpatialMaterial" id=22]
+flags_transparent = true
+albedo_color = Color( 0, 0, 0, 0.752941 )
+
+[sub_resource type="BoxShape" id=25]
+extents = Vector3( 1, 3, 1 )
+
+[sub_resource type="CubeMesh" id=9]
+material = ExtResource( 8 )
+
+[sub_resource type="CubeMesh" id=10]
+
+[sub_resource type="SpatialMaterial" id=11]
+flags_transparent = true
+albedo_color = Color( 0, 1, 0.882353, 0.282353 )
+
+[sub_resource type="CubeMesh" id=12]
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0.717647, 0.0470588, 0.0470588, 1 )
+
+[sub_resource type="CubeMesh" id=16]
+
+[sub_resource type="SphereMesh" id=14]
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 0, 0.415686, 1, 1 )
+
+[sub_resource type="PrismMesh" id=17]
+
+[sub_resource type="BoxShape" id=27]
+extents = Vector3( 4.1, 0.8, 3 )
+
+[sub_resource type="Environment" id=5]
+background_color = Color( 0.929412, 0.686275, 0.109804, 1 )
+ambient_light_color = Color( 0.721569, 0.462745, 0.0941176, 1 )
+ambient_light_energy = 1.67
+
+[node name="apothecary" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="ground" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="ground"]
+transform = Transform( 8.49346, 0, 0, 0, 1, 0, 0, 0, 8.8, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.155044, 0 )
+shape = SubResource( 2 )
+
+[node name="Door" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1.5, 0, 0, 0, 1.6, 8.29261, 0, -0.1 )
+scene = "res://scenes/maps/town.tscn"
+this_scene = "apothecary"
+
+[node name="town" type="Position3D" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 0.313463, 0 )
+
+[node name="room" type="Spatial" parent="."]
+
+[node name="wall" type="MeshInstance" parent="room"]
+transform = Transform( 8.385, 0, 0, 0, -1.40641e-07, -3.2175, 0, 1, -4.37114e-08, 0, 2.7, -8.83658 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="room/wall"]
+
+[node name="CollisionShape" type="CollisionShape" parent="room/wall/StaticBody"]
+shape = SubResource( 23 )
+
+[node name="wall2" type="MeshInstance" parent="room"]
+transform = Transform( 8.385, 0, 0, 0, -4.37114e-08, 3.2175, 0, -1, -1.40641e-07, 0, 2.7, 2.74641 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="room/wall2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="room/wall2/StaticBody"]
+shape = SubResource( 23 )
+
+[node name="wall3" type="MeshInstance" parent="room"]
+transform = Transform( -3.6652e-07, 1, -1.40641e-07, 0, -4.37114e-08, -3.2175, -9.2235, -4.80825e-08, 6.76239e-15, -8.37705, 2.7, -0.25359 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="room/wall3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="room/wall3/StaticBody"]
+shape = SubResource( 23 )
+
+[node name="wall4" type="MeshInstance" parent="room"]
+transform = Transform( -4.03172e-07, -1, 1.40641e-07, 0, -4.37114e-08, -3.2175, 9.2235, -4.37114e-08, 6.14763e-15, 8.38882, 2.7, -0.25359 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 5 )
+
+[node name="StaticBody" type="StaticBody" parent="room/wall4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="room/wall4/StaticBody"]
+shape = SubResource( 23 )
+
+[node name="MeshInstance" type="MeshInstance" parent="room"]
+transform = Transform( -8.68809, 7.59537e-07, 0, -8.74228e-08, -1, 0, 0, 0, 8.96783, 0, 5.91077, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="props" type="Spatial" parent="."]
+
+[node name="apothecary_shelve" parent="props" instance=ExtResource( 4 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -7.26913 )
+
+[node name="StaticBody" type="StaticBody" parent="props/apothecary_shelve" groups=["object"]]
+collision_layer = 33
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="props/apothecary_shelve/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66667, -0.8 )
+shape = SubResource( 26 )
+
+[node name="lamp" type="MeshInstance" parent="props"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 5.9, -3 )
+mesh = ExtResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="props/lamp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.8537, 0 )
+mesh = SubResource( 8 )
+
+[node name="bed_apo" type="MeshInstance" parent="props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 2, -7.1, 0.3, -2 )
+mesh = SubResource( 18 )
+material/0 = ExtResource( 10 )
+
+[node name="StaticBody" type="StaticBody" parent="props/bed_apo" groups=["object"]]
+collision_layer = 33
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="props/bed_apo/StaticBody"]
+shape = SubResource( 24 )
+
+[node name="table_apo" type="MeshInstance" parent="props"]
+transform = Transform( 1.684, 0, 0, 0, 0.168, 0, 0, 0, 1, -1.1, 1.5914, -3.19548 )
+mesh = SubResource( 19 )
+material/0 = ExtResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="props/table_apo"]
+transform = Transform( 0.2, 0, 0, 0, 4.42, 0, 0, 0, 0.2, 0, -4.91843, 0 )
+mesh = SubResource( 20 )
+material/0 = ExtResource( 10 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="props/table_apo"]
+transform = Transform( 0.85, 0, 0, 0, 1, 0, 0, 0, 0.9, 0, -9.32764, 0 )
+mesh = SubResource( 21 )
+material/0 = SubResource( 22 )
+
+[node name="StaticBody" type="StaticBody" parent="props/table_apo" groups=["object"]]
+collision_layer = 33
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="props/table_apo/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.78571, 0 )
+shape = SubResource( 25 )
+
+[node name="jars" type="Spatial" parent="props" groups=["object"]]
+
+[node name="jangingJar" type="MeshInstance" parent="props/jars"]
+transform = Transform( 0.05, 0, 0, 0, 0.87519, 0, 0, 0, 0.05, -1.4255, 6.08254, -0.0730416 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="Jar" type="MeshInstance" parent="props/jars/jangingJar"]
+transform = Transform( 3.64, 0, 0, 0, 0.3, 0, 0, 0, 4.125, 0, -1.25687, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="props/jars/jangingJar/Jar"]
+transform = Transform( 0.32945, 0, 0, 0, 0.589557, 0, 0, 0, 0.181971, 0, -0.301054, 0 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="cork" type="MeshInstance" parent="props/jars/jangingJar/Jar"]
+transform = Transform( 0.927727, 0, 0, 0, 0.153487, 0, 0, 0, 0.780003, 0, 1.00699, 0 )
+mesh = SubResource( 16 )
+material/0 = ExtResource( 9 )
+
+[node name="jangingJar2" type="MeshInstance" parent="props/jars"]
+transform = Transform( 0.05, 0, 0, 0, 0.87519, 0, 0, 0, 0.05, -4.1255, 5.58254, -2.07304 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="Jar" type="MeshInstance" parent="props/jars/jangingJar2"]
+transform = Transform( 3.64, 0, 0, 0, 0.3, 0, 0, 0, 4.125, 0, -1.25687, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="props/jars/jangingJar2/Jar"]
+transform = Transform( 0.26356, 0, 0, 0, 0.577766, 0, 0, 0, 0.582308, 0, -0.301054, 0 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="cork" type="MeshInstance" parent="props/jars/jangingJar2/Jar"]
+transform = Transform( 0.927727, 0, 0, 0, 0.153487, 0, 0, 0, 0.780003, 0, 1.00699, 0 )
+mesh = SubResource( 16 )
+material/0 = ExtResource( 9 )
+
+[node name="jangingJar4" type="MeshInstance" parent="props/jars"]
+transform = Transform( 0.05, 0, 0, 0, 0.87519, 0, 0, 0, 0.05, -1.7255, 5.48254, -2.97304 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="Jar" type="MeshInstance" parent="props/jars/jangingJar4"]
+transform = Transform( 3.64, 0, 0, 0, 0.3, 0, 0, 0, 4.125, 0, -1.25687, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="props/jars/jangingJar4/Jar"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.301054, 0 )
+mesh = SubResource( 14 )
+material/0 = SubResource( 15 )
+
+[node name="cork" type="MeshInstance" parent="props/jars/jangingJar4/Jar"]
+transform = Transform( 0.927727, 0, 0, 0, 0.153487, 0, 0, 0, 0.780003, 0, 1.00699, 0 )
+mesh = SubResource( 16 )
+material/0 = ExtResource( 9 )
+
+[node name="jangingJar6" type="MeshInstance" parent="props/jars"]
+transform = Transform( 0.05, 0, 0, 0, 0.87519, 0, 0, 0, 0.05, -3.7255, 5.28254, 0.126958 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="Jar" type="MeshInstance" parent="props/jars/jangingJar6"]
+transform = Transform( 3.64, 0, 0, 0, 0.3, 0, 0, 0, 4.125, 0, -1.25687, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="props/jars/jangingJar6/Jar"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.301054, 0 )
+mesh = SubResource( 17 )
+material/0 = SubResource( 15 )
+
+[node name="cork" type="MeshInstance" parent="props/jars/jangingJar6/Jar"]
+transform = Transform( 0.927727, 0, 0, 0, 0.153487, 0, 0, 0, 0.780003, 0, 1.00699, 0 )
+mesh = SubResource( 16 )
+material/0 = ExtResource( 9 )
+
+[node name="jangingJar5" type="MeshInstance" parent="props/jars"]
+transform = Transform( 0.05, 0, 0, 0, 0.87519, 0, 0, 0, 0.05, 0.574501, 5.68254, -5.07304 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="Jar" type="MeshInstance" parent="props/jars/jangingJar5"]
+transform = Transform( 3.64, 0, 0, 0, 0.3, 0, 0, 0, 4.125, 0, -1.25687, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="props/jars/jangingJar5/Jar"]
+transform = Transform( 0.186365, -0.637881, -0.154663, 0, 0.458568, -0.111186, 0.164453, 0.562882, 0.136479, 0, -0.301054, -5.72205e-06 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="cork" type="MeshInstance" parent="props/jars/jangingJar5/Jar"]
+transform = Transform( 0.927727, 0, 0, 0, 0.153487, 0, 0, 0, 0.780003, 0, 1.00699, 0 )
+mesh = SubResource( 16 )
+material/0 = ExtResource( 9 )
+
+[node name="jangingJar3" type="MeshInstance" parent="props/jars"]
+transform = Transform( 0.05, 0, 0, 0, 0.87519, 0, 0, 0, 0.05, 2.8745, 5.18254, -2.07304 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="Jar" type="MeshInstance" parent="props/jars/jangingJar3"]
+transform = Transform( 3.64, 0, 0, 0, 0.3, 0, 0, 0, 4.125, 0, -1.25687, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="props/jars/jangingJar3/Jar"]
+transform = Transform( 0.210848, 0, 0, 0, 0.408543, -0.323451, 0, 0.312046, 0.247053, 0, -0.076025, 0 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="cork" type="MeshInstance" parent="props/jars/jangingJar3/Jar"]
+transform = Transform( 0.927727, 0, 0, 0, 0.153487, 0, 0, 0, 0.780003, 0, 1.00699, 0 )
+mesh = SubResource( 16 )
+material/0 = ExtResource( 9 )
+
+[node name="jangingJar7" type="MeshInstance" parent="props/jars"]
+transform = Transform( 0.05, 0, 0, 0, 1.13775, 0, 0, 0, 0.05, -0.1255, 4.78254, -2.07304 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="Jar" type="MeshInstance" parent="props/jars/jangingJar7"]
+transform = Transform( 3.64, 0, 0, 0, 0.3, 0, 0, 0, 4.125, 0, -1.25687, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="MeshInstance" type="MeshInstance" parent="props/jars/jangingJar7/Jar"]
+transform = Transform( 0.210848, 0, 0, 0, 0.408543, -0.323451, 0, 0.312046, 0.247053, 0, -0.076025, 0 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="cork" type="MeshInstance" parent="props/jars/jangingJar7/Jar"]
+transform = Transform( 0.927727, 0, 0, 0, 0.153487, 0, 0, 0, 0.780003, 0, 1.00699, 0 )
+mesh = SubResource( 16 )
+material/0 = ExtResource( 9 )
+
+[node name="StaticBody" type="StaticBody" parent="props/jars" groups=["object"]]
+collision_layer = 33
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="props/jars/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 4.31383, -2.6 )
+shape = SubResource( 27 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+material = ExtResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+size = Vector2( 213, 160 )
+handle_input_locally = false
+render_target_update_mode = 3
+audio_listener_enable_3d = true
+
+[node name="player" parent="CanvasLayer/ViewportContainer/Viewport" instance=ExtResource( 1 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 5 )
+
+[node name="door_short" parent="." instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.3, 0, 1.1 )

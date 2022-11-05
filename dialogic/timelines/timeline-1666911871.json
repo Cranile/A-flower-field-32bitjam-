@@ -1,0 +1,31 @@
+{
+	"events": [
+		{
+			"character": "character-1666911844.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Sorry but you can go beyond here, the investigation is to be done inside the town, it can be really dangerous out there"
+		},
+		{
+			"character": "character-1666911844.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The path seems to continue on the oposite direction of this village, for now the area hasn't been explored, but we have reasons to believe there that there is Disc Eaters around the area."
+		},
+		{
+			"character": "character-1666911844.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You and your team should hurry up and get everything you can, we don't want to be intercepted by a patrol."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1666911871.json",
+		"name": "guard_1"
+	}
+}

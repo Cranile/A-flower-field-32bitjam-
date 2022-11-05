@@ -1,0 +1,19 @@
+{
+	"events": [
+		{
+			"character": "character-1667165664.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Listen Up! we recieved a report of meat grinders on the area, return to my position at the plaza immediately. If you dont hurry up we leave without you."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1667165659.json",
+		"name": "end"
+	}
+}

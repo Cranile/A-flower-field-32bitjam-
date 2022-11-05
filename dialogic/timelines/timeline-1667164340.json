@@ -1,0 +1,19 @@
+{
+	"events": [
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The desk is as much part of the room as the walls and the ground, it's made out of concrete too. At least the location inside the room, is apropiate, it could be worse. It could be hanging from the ceiling."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1667164340.json",
+		"name": "desk"
+	}
+}

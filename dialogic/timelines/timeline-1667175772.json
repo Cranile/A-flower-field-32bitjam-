@@ -1,0 +1,70 @@
+{
+	"events": [
+		{
+			"event_id": "dialogic_024",
+			"set_theme": "theme-1667176419.cfg"
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": true,
+			"wait_seconds": 1
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "\"I was about six years old when my grandfather showed me the flower field for the first time.\nThe path from the town was not too long, it's a little bit hidden, tight and with a shape that seemed defined by a snake. Then you reach the spires plains and after that, before your eyes it presents itself, the flower fields, it's just a couple of minutes walking. Even my grandpa who was missing a leg could make it in 12 minutes, and despite all i used to be alone in that place. No one appeared around those lairs, most of the townspeople had a bad feeling about it and some of them, where certain that, just entering that place even once, was enough to curse you for life."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I never got it, for my that was the best place on the entire world, not that i had seen a lot of it. The first time i stepped on the fields with my grandfather, we sat down and he told me a story, when he was my age his grandfather showed him this place, just like he was doing at that moment, his granpa told him that the things that covered the soil like a blanket where called 'flowers' and those flowers were one of the only things that remain from the 'previous world', his grandfather said that he actually discovered these things only because his great grand mother once read about it on a book, that these flowers growed on their own from the ground, and that each one had their own unique colored lights, she also said that the amount of colors that flowers could have, were infinite, but the colors would change depending on the type of the flower."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "To be honest, i never learnt about the different flower types so i don't know what are the flowers of our field, they are black and red and the lights are sometimes red and other green, some times they flicker en between one another, others they are just one color, and for some reason, a portion of them have no lights at all.\nSadly the book where my ancestors read about flowers was lost when they fled their old village after it was attacked by a bunch of meat grinders. But all that was way before my grandpa was even born."
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "And here i must admit why i write this words, and confess my selfish desire, i made a promise with my grandfather 'When you come of age and start your own family, i want you to pass this story, and visit the flower fields with your children' . Pitifully i never formed a family, after all no one wants to be close to a marked. This text is my last effort to get someone, anybody! to find this text, read my words and go to the flower field, and admire the beautiful old world. I hope you are able to enjoy it as much as i did.\""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": " -- Recovered Document Number 1632"
+		},
+		{
+			"character": "character-1667176681.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This text was found the day ---- in an abandoned village  south-east of Panox metallurgy. Some remains where found, with an estimated date of death of fifteen years.\n Judging by the state of the bones and the general lack of corpses, when considering the size of the village, we assume the settlement was  attacked by meat grinders, and the townsfolk lacked the means to defend themselves or the time to escape."
+		},
+		{
+			"character": "character-1667176702.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Taking in consideration that the alphabet of this text is yet to be decoded and the nature of the text results unkown we asume that  there where no survivors and the language is therefore extinct. The writing will await for a translation made on the Manifest Archive."
+		},
+		{
+			"character": "character-1667176715.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This text was found \"sealed\" in a safe room under the village. At this point we can only speculate, ¿why none of the villagers used that room to stay safe from the attack, but instead safeguarded this book, to the point of sealing the room from the outside. ¿ What type of technological secrets await for us, inside these elusive words?"
+		},
+		{
+			"change_timeline": "timeline-1667179551.json",
+			"event_id": "dialogic_020"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1667175772.json",
+		"name": "after_end"
+	}
+}

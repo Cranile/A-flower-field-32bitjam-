@@ -1,0 +1,330 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://SFX/footstep-01.ogg" type="AudioStream" id=2]
+[ext_resource path="res://scenes/menu.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleMesh" id=1]
+radius = 0.5
+mid_height = 1.5
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.5
+height = 1.5
+
+[sub_resource type="Animation" id=3]
+resource_name = "blackout"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("head/Camera/UI/blackOut:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("head/Camera/UI/blackOut:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "blackout_end"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("head/Camera/UI/blackOut:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("head/Camera/UI/blackOut:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+
+[node name="player" type="KinematicBody" groups=["player"]]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.25906, 0 )
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.25837, 0 )
+shape = SubResource( 2 )
+
+[node name="head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34097, 0 )
+
+[node name="Camera" type="Camera" parent="head"]
+fov = 80.0
+far = 215.0
+
+[node name="UI" type="Control" parent="head/Camera"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="crosshair" type="ColorRect" parent="head/Camera/UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -0.5
+margin_top = -0.5
+margin_right = 1.5
+margin_bottom = 1.5
+
+[node name="tutorial" type="Label" parent="head/Camera/UI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.0
+margin_top = -35.0
+margin_right = 52.0
+margin_bottom = 23.0
+text = "Interact with \"E\""
+
+[node name="blackOut" type="ColorRect" parent="head/Camera/UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+
+[node name="menu" type="ColorRect" parent="head/Camera/UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -80.0
+margin_right = 100.0
+margin_bottom = 80.0
+color = Color( 0.0823529, 0.0745098, 0.0745098, 1 )
+script = ExtResource( 3 )
+
+[node name="main" type="Control" parent="head/Camera/UI/menu"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="head/Camera/UI/menu/main"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Menu"
+
+[node name="exit" type="Button" parent="head/Camera/UI/menu/main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = 42.0
+margin_right = 15.0
+margin_bottom = 62.0
+text = "Exit"
+
+[node name="credits" type="Button" parent="head/Camera/UI/menu/main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = 5.0
+margin_right = 25.0
+margin_bottom = 25.0
+text = "Credits"
+
+[node name="options" type="Button" parent="head/Camera/UI/menu/main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -35.0
+margin_top = -37.0
+margin_right = 28.0
+margin_bottom = -17.0
+text = "Options"
+
+[node name="credits" type="Control" parent="head/Camera/UI/menu"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="head/Camera/UI/menu/credits"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Credits"
+
+[node name="dither" type="LinkButton" parent="head/Camera/UI/menu/credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = -50.0
+margin_right = 22.0
+margin_bottom = -36.0
+text = "Dither"
+
+[node name="footsteps" type="LinkButton" parent="head/Camera/UI/menu/credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -28.0
+margin_top = -27.0
+margin_right = 32.0
+margin_bottom = -13.0
+text = "footsteps"
+
+[node name="base model" type="LinkButton" parent="head/Camera/UI/menu/credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -5.0
+margin_right = 58.0
+margin_bottom = 9.0
+focus_mode = 2
+text = "Base model (NPC)"
+
+[node name="textures" type="LinkButton" parent="head/Camera/UI/menu/credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = 20.0
+margin_right = 28.0
+margin_bottom = 34.0
+focus_mode = 2
+text = "textures"
+
+[node name="options" type="Control" parent="head/Camera/UI/menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="head/Camera/UI/menu/options"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Options"
+
+[node name="mouse" type="Label" parent="head/Camera/UI/menu/options"]
+margin_left = 49.0
+margin_top = 28.0
+margin_right = 162.0
+margin_bottom = 42.0
+text = "Mouse sensitivity"
+
+[node name="HSlider" type="HSlider" parent="head/Camera/UI/menu/options/mouse"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.5
+margin_top = 9.0
+margin_right = 49.5
+margin_bottom = 25.0
+max_value = 10.0
+step = 0.2
+value = 1.0
+
+[node name="current" type="Label" parent="head/Camera/UI/menu/options/mouse"]
+margin_left = 36.0
+margin_top = 31.0
+margin_right = 76.0
+margin_bottom = 45.0
+text = "0.5"
+align = 1
+
+[node name="min" type="Label" parent="head/Camera/UI/menu/options/mouse"]
+margin_left = -5.0
+margin_top = 17.0
+margin_right = 3.0
+margin_bottom = 31.0
+text = "0"
+
+[node name="max" type="Label" parent="head/Camera/UI/menu/options/mouse"]
+margin_left = 108.0
+margin_top = 17.0
+margin_right = 148.0
+margin_bottom = 31.0
+text = "10"
+
+[node name="RayCast" type="RayCast" parent="head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.253269, -0.415218 )
+enabled = true
+cast_to = Vector3( 0, 0, -5 )
+collision_mask = 36
+collide_with_areas = true
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+unit_db = -3.0
+
+[node name="footstep_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/blackout = SubResource( 3 )
+anims/blackout_end = SubResource( 4 )
+
+[connection signal="visibility_changed" from="head/Camera/UI/menu" to="head/Camera/UI/menu" method="_on_menu_visibility_changed"]
+[connection signal="button_up" from="head/Camera/UI/menu/main/exit" to="head/Camera/UI/menu" method="_on_exit_button_up"]
+[connection signal="button_up" from="head/Camera/UI/menu/main/credits" to="head/Camera/UI/menu" method="_on_credits_button_up"]
+[connection signal="button_up" from="head/Camera/UI/menu/main/options" to="head/Camera/UI/menu" method="_on_options_button_up"]
+[connection signal="button_up" from="head/Camera/UI/menu/credits/dither" to="head/Camera/UI/menu" method="_on_dither_button_up"]
+[connection signal="button_up" from="head/Camera/UI/menu/credits/footsteps" to="head/Camera/UI/menu" method="_on_footsteps_button_up"]
+[connection signal="button_up" from="head/Camera/UI/menu/credits/base model" to="head/Camera/UI/menu" method="_on_base_model_button_up"]
+[connection signal="button_up" from="head/Camera/UI/menu/credits/textures" to="head/Camera/UI/menu" method="_on_textures_button_up"]
+[connection signal="drag_ended" from="head/Camera/UI/menu/options/mouse/HSlider" to="head/Camera/UI/menu" method="_on_HSlider_drag_ended"]
+[connection signal="value_changed" from="head/Camera/UI/menu/options/mouse/HSlider" to="head/Camera/UI/menu" method="_on_HSlider_value_changed"]
+[connection signal="gameplay_entered" from="head/RayCast" to="." method="_on_RayCast_gameplay_entered"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

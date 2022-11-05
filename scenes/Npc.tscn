@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://3Dmodels/Npc.glb" type="PackedScene" id=1]
+[ext_resource path="res://textures/NpcTexture1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Npc.gd" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.516463, 0.399792, 1.24069 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=6]
+material = SubResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.192157, 0.0901961, 0.0901961, 1 )
+
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
+
+[node name="Npc" groups=["npc"] instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="KinematicBody" type="KinematicBody" parent="." index="0" groups=["npc"]]
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.25056, -0.0083786 )
+shape = SubResource( 1 )
+
+[node name="PSX_Guard_Body" parent="." index="1"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+material/0 = SubResource( 2 )
+
+[node name="gun" type="MeshInstance" parent="PSX_Guard_Body" index="0"]
+transform = Transform( 0.340137, 0.0323035, -0.00651354, -0.233962, 0.0469633, 0.00448032, 0.0932404, 0, 0.0350033, 0.0940335, 1.02092, 0.186733 )
+visible = false
+mesh = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="PSX_Guard_Body/gun" index="0"]
+transform = Transform( 0.0503755, 0.0718272, 0, -0.235819, 0.845914, 0, 0, 0, 0.650705, -0.425386, -1.28161, 0 )
+mesh = SubResource( 6 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="PSX_Guard_Body/gun" index="1"]
+transform = Transform( 0.0595495, -0.00114239, 0, 0.0062548, 1.6676, 0, 0, 0, 0.650705, -0.666116, -1.9188, 0 )
+mesh = SubResource( 6 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="PSX_Guard_Body/gun" index="2"]
+transform = Transform( 0.0595495, -0.00114239, 0, 0.0062548, 1.6676, 0, 0, 0, 0.650705, 0.0594048, -0.944492, 0 )
+mesh = SubResource( 6 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="PSX_Guard_Body/gun" index="3"]
+transform = Transform( 0.154693, 0, 0, 0, -6.8763e-08, 0.411996, 0, -2.49877, -2.86059e-08, -0.168979, -0.212885, 1.72936 )
+mesh = SubResource( 8 )

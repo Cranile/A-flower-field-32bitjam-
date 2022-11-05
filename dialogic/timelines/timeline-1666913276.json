@@ -1,0 +1,37 @@
+{
+	"events": [
+		{
+			"character": "character-1666913294.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This seem to be the barracks for the guards, we found twenty beds, but only six looked like used."
+		},
+		{
+			"character": "character-1666913294.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There where a bunch of primitive weapons, most of them spears, and even some bows, can you believe that? it would be impossible to penetrate the armor of a Disc Eater with arrows, what type of fool would fight any machine with that."
+		},
+		{
+			"character": "character-1666913294.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "They had some combat armor, but it was really battered, it was torn everywhere and it had bite marks all over, if i had to guess a pack of Flesh Processors caught the poor bastard using it."
+		},
+		{
+			"character": "character-1666913294.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Some of the armor was made out of scrap, but the numbers don't make any sense, it's possible that most of the guards dissapeared with the armors on them... just like the rest of this village."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1666913276.json",
+		"name": "barrack"
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"color": "#ffffffff",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1667179589.json",
+	"mirror_portraits": false,
+	"name": "Grandpa",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": -100,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://textures/pendrive.png"
+		}
+	],
+	"scale": 100,
+	"theme": "default-theme.cfg"
+}

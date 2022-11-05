@@ -1,0 +1,31 @@
+{
+	"events": [
+		{
+			"character": "character-1666910061.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This house has a lot of books, maybe a library of some sorts, though it could also be the place of someone important for this town."
+		},
+		{
+			"character": "character-1666910061.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Anyways, you should go in and gather some info, it's your job after all."
+		},
+		{
+			"character": "character-1666910061.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Enter whenever you are ready"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1666910033.json",
+		"name": "mayor"
+	}
+}

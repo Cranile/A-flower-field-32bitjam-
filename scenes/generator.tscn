@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://textures/generator_texture256.jpg" type="Texture" id=1]
+[ext_resource path="res://3Dmodels/generator.glb" type="PackedScene" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 4.98651, 2.34573, 2.85184 )
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+albedo_color = Color( 0.764706, 0.94902, 1, 0.121569 )
+
+[sub_resource type="PlaneMesh" id=4]
+material = SubResource( 3 )
+
+[node name="generator" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="Cube" parent="." index="0"]
+material/0 = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="." index="1"]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36686, -2.12483 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="2"]
+transform = Transform( 1.22323, -0.143354, 9.39306e-09, 0, -4.37114e-08, -1.499, 0.177186, 0.989671, -6.48466e-08, 2.31791, 2.48719, 0.760991 )
+mesh = SubResource( 4 )

@@ -1,0 +1,37 @@
+{
+	"events": [
+		{
+			"character": "character-1666914268.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This area's generation looks completely off, whatever was building here went rouge or something."
+		},
+		{
+			"character": "character-1666914268.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It's my first time seeing something like this, maybe we should take note on the condition of these structures."
+		},
+		{
+			"character": "character-1666914268.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It doesn't seem to be anything inside there, but you should go inside to be sure."
+		},
+		{
+			"character": "character-1666914268.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The door is open."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1666914264.json",
+		"name": "basement"
+	}
+}

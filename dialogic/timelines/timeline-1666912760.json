@@ -1,0 +1,37 @@
+{
+	"events": [
+		{
+			"character": "character-1666912743.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It seems this used to be a medical facility"
+		},
+		{
+			"character": "character-1666912743.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "A big portion of the medical supplies are very rustic, developed locally, probably made out of the local flora and fauna."
+		},
+		{
+			"character": "character-1666912743.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Weirdly enough part of the equipment is of really high technology, i wonder where they got all of this from, judging by the ammount i would say, wherever it's from, there must be more."
+		},
+		{
+			"character": "character-1666912743.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "We found some med-kits, and they looked new, maybe they got them from that printer on the central plaza."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1666912760.json",
+		"name": "medical"
+	}
+}

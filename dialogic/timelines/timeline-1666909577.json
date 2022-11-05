@@ -1,0 +1,31 @@
+{
+	"events": [
+		{
+			"character": "character-1666909521.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "We found a printer, it seems the locals used this one quite often."
+		},
+		{
+			"character": "character-1666909521.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "We are not sure what this one is able to create, that's for the Cybernetics team to figure out."
+		},
+		{
+			"character": "character-1666909521.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The other team comes right after we leave, we don't want to attract too much attention to the area."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1666909577.json",
+		"name": "generator"
+	}
+}

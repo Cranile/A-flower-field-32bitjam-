@@ -1,0 +1,37 @@
+{
+	"events": [
+		{
+			"character": "character-1666906225.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Investigator, your job is collecting as many relevant documents as you can find. Try to figure out what happend here. Any information may be useful, corpses, fight signs, anything that may seem out of place."
+		},
+		{
+			"character": "character-1666906225.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There is three main locations you need to search, the first two are to my left just after the alley, the last is behind you, also followed by an alley. It seems the architects of these area really liked alleys. . ."
+		},
+		{
+			"character": "character-1666906225.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "That or maybe their AIs just broke, like most machines around here..."
+		},
+		{
+			"character": "character-1666906225.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Anyways, start working ASAP"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.5
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1666906198.json",
+		"name": "introduction"
+	}
+}

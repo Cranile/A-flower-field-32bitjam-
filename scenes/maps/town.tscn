@@ -1,0 +1,875 @@
+[gd_scene load_steps=58 format=2]
+
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/mossyBrick.jpg" type="Texture" id=2]
+[ext_resource path="res://scenes/tall_building_3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/tall_building_1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/tall_building_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/scene.gd" type="Script" id=6]
+[ext_resource path="res://scenes/Npc.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mainBuildingsMat.tres" type="Material" id=8]
+[ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/buildingSmall_1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/buildingSmall_2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/buildingSmall_3.tscn" type="PackedScene" id=13]
+[ext_resource path="res://main_env.tres" type="Environment" id=14]
+[ext_resource path="res://shaders/lamp_glow.tres" type="CubeMesh" id=15]
+[ext_resource path="res://scenes/apothecary_out.tscn" type="PackedScene" id=16]
+[ext_resource path="res://shaders/gray.tres" type="Material" id=17]
+[ext_resource path="res://scenes/generator.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/mayor_out.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/barracks.tscn" type="PackedScene" id=20]
+[ext_resource path="res://shaders/black.tres" type="Material" id=21]
+[ext_resource path="res://shaders/orange.tres" type="Material" id=22]
+[ext_resource path="res://shaders/dark_brown.tres" type="Material" id=23]
+[ext_resource path="res://textures/concrete1.jpg" type="Texture" id=24]
+[ext_resource path="res://textures/sandstone256.jpg" type="Texture" id=25]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=14]
+flags_world_triplanar = true
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv1_triplanar = true
+uv1_triplanar_sharpness = 1e-05
+
+[sub_resource type="BoxShape" id=12]
+
+[sub_resource type="PlaneMesh" id=9]
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0.14902, 0.384314, 0.839216, 1 )
+
+[sub_resource type="BoxShape" id=28]
+extents = Vector3( 34.4378, 14.5562, 1 )
+
+[sub_resource type="PlaneMesh" id=6]
+
+[sub_resource type="SpatialMaterial" id=42]
+flags_world_triplanar = true
+albedo_color = Color( 0.992157, 1, 0.878431, 1 )
+albedo_texture = ExtResource( 25 )
+uv1_scale = Vector3( 0.3, 0.3, 0.3 )
+uv1_triplanar = true
+
+[sub_resource type="CubeMesh" id=8]
+
+[sub_resource type="PlaneMesh" id=40]
+
+[sub_resource type="SpatialMaterial" id=41]
+albedo_texture = ExtResource( 24 )
+
+[sub_resource type="CubeMesh" id=13]
+
+[sub_resource type="BoxShape" id=33]
+extents = Vector3( 1, 7.27823, 25.1231 )
+
+[sub_resource type="PlaneMesh" id=38]
+
+[sub_resource type="PlaneMesh" id=39]
+
+[sub_resource type="CubeMesh" id=23]
+
+[sub_resource type="SpatialMaterial" id=24]
+albedo_color = Color( 0.372549, 0.309804, 0.309804, 1 )
+
+[sub_resource type="CubeMesh" id=11]
+
+[sub_resource type="PlaneMesh" id=27]
+
+[sub_resource type="PlaneMesh" id=32]
+
+[sub_resource type="PlaneMesh" id=29]
+
+[sub_resource type="PlaneMesh" id=30]
+
+[sub_resource type="PlaneMesh" id=31]
+
+[sub_resource type="SpatialMaterial" id=25]
+albedo_color = Color( 0.223529, 0.184314, 0.184314, 1 )
+
+[sub_resource type="CubeMesh" id=26]
+material = SubResource( 25 )
+
+[sub_resource type="SpatialMaterial" id=17]
+flags_transparent = true
+albedo_color = Color( 1, 0.92549, 0.4, 0.0313726 )
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 0.1
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=18]
+material = SubResource( 17 )
+radius = 2.0
+height = 4.0
+radial_segments = 16
+rings = 16
+
+[sub_resource type="SpatialMaterial" id=22]
+albedo_color = Color( 0.121569, 0.101961, 0.101961, 1 )
+
+[sub_resource type="CubeMesh" id=19]
+material = SubResource( 22 )
+
+[sub_resource type="PlaneMesh" id=34]
+
+[sub_resource type="PlaneMesh" id=35]
+
+[sub_resource type="PlaneMesh" id=36]
+
+[sub_resource type="BoxShape" id=37]
+extents = Vector3( 1, 1, 24.5256 )
+
+[node name="town" type="Spatial"]
+script = ExtResource( 6 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 14 )
+
+[node name="enviroment" type="Spatial" parent="."]
+
+[node name="StaticBody" type="StaticBody" parent="enviroment"]
+
+[node name="ground" type="MeshInstance" parent="enviroment/StaticBody"]
+transform = Transform( 140, 0, 0, 0, 1, 0, 0, 0, 140, 49, 0, 94.6437 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 14 )
+
+[node name="CollisionShape" type="CollisionShape" parent="enviroment/StaticBody"]
+transform = Transform( 140, 0, 0, 0, 2, 0, 0, 0, 140, 49, -2, 95 )
+shape = SubResource( 12 )
+
+[node name="lake" type="MeshInstance" parent="enviroment"]
+transform = Transform( 240, 0, 0, 0, 1, 0, 0, 0, 34, 37.8123, -5.23521, -77.778 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+
+[node name="lakewall" type="StaticBody" parent="enviroment/lake" groups=["object"]]
+transform = Transform( 0.00416667, 0, 0, 0, 1, 0, 0, 0, 0.0294118, -0.157551, 5.23521, 0.959026 )
+collision_layer = 33
+
+[node name="CollisionShape" type="CollisionShape" parent="enviroment/lake/lakewall"]
+shape = SubResource( 28 )
+
+[node name="plazaGround" type="MeshInstance" parent="enviroment"]
+transform = Transform( 22.4, 0, 0, 0, 0.2, 0, 0, 0, 19.6, -2.3101, 0.0228915, -25.4745 )
+mesh = SubResource( 6 )
+skeleton = NodePath("../StaticBody/ground")
+material/0 = SubResource( 42 )
+
+[node name="market" type="MeshInstance" parent="enviroment"]
+transform = Transform( 4.32, 0, 0, 0, 5.6, 0, 0, 0, 22.95, 23.8232, 6.2071, -22.9541 )
+visible = false
+material_override = ExtResource( 8 )
+mesh = SubResource( 8 )
+
+[node name="hospital" type="MeshInstance" parent="enviroment"]
+transform = Transform( -6.11959e-07, 0, -24, 0, 10, 0, 14, 0, -1.04907e-06, 48.9128, 10.2071, 98.0459 )
+visible = false
+material_override = ExtResource( 8 )
+mesh = SubResource( 8 )
+
+[node name="buildingTallEmpty5" type="MeshInstance" parent="enviroment"]
+transform = Transform( 12.1746, 0, 0, 0, 48.7867, 0, 0, 0, 15, -55.1768, 51.4152, 67.0459 )
+mesh = SubResource( 8 )
+material/0 = ExtResource( 17 )
+
+[node name="basement" type="Spatial" parent="enviroment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53.0913, 0, 88.7494 )
+
+[node name="apothecary_out" parent="enviroment/basement" instance=ExtResource( 16 )]
+transform = Transform( 0.643389, 0, -0.765539, 0, 1, 0, 0.765539, 0, 0.643389, 2.67015, -0.070425, 2.90091 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enviroment/basement"]
+transform = Transform( -2.75974, 0.636199, 0, -2.27569, -0.771525, 0, 0, 0, 3.425, 2, 5.96152, -1.6104 )
+mesh = SubResource( 40 )
+material/0 = SubResource( 41 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="enviroment/basement"]
+transform = Transform( -1.43788e-07, 0.919623, -1.34535, -3.577, -4.37114e-08, 0, -6.14169e-08, 0.392803, 3.14971, 0.850025, 1.5215, -2.14285 )
+mesh = SubResource( 40 )
+material/0 = SubResource( 41 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="enviroment/basement"]
+transform = Transform( -2.17471, 0.553307, 2.70354, -2.6779, -0.638333, -0.850192, 0.945734, -0.535147, 3.8094, 3.92753, 5.47797, 4.23764 )
+mesh = SubResource( 40 )
+material/0 = SubResource( 41 )
+
+[node name="Door" parent="enviroment/basement" instance=ExtResource( 9 )]
+transform = Transform( 1.25828, 0, 1.29129, 0, 1.54017, 0, -1.0361, 0, 1.56819, 1.08823, -0.254588, 0.768578 )
+scene = "res://scenes/maps/playerHouse.tscn"
+this_scene = "town"
+
+[node name="playerhouse" type="MeshInstance" parent="enviroment"]
+transform = Transform( 7, 0, 0, 0, 5.04, 0, 0, 0, 7.56, -60.1768, 4.74541, 90.0459 )
+material_override = ExtResource( 8 )
+mesh = SubResource( 8 )
+
+[node name="mayorshouse" type="MeshInstance" parent="enviroment"]
+transform = Transform( 12.6726, 0, 2.22995, 0, 4, 0, -2.89893, 0, 9.7482, -75.3353, 2.86562, -4.95334 )
+mesh = SubResource( 8 )
+material/0 = ExtResource( 8 )
+
+[node name="Door" parent="enviroment/mayorshouse" instance=ExtResource( 9 )]
+transform = Transform( 5.40167e-08, 0, -0.2, 0, 0.5, 0, 0.1, 0, 1.11759e-07, 0.454866, -0.75, 1.00257 )
+scene = "res://scenes/maps/mayorHouse.tscn"
+this_scene = "town"
+
+[node name="apothecary" type="MeshInstance" parent="enviroment"]
+transform = Transform( 5, 0, 0, 0, 4, 0, 0, 0, 15, -69.9911, 3.86562, 50.005 )
+mesh = SubResource( 8 )
+material/0 = ExtResource( 8 )
+
+[node name="apothecary_out" parent="enviroment/apothecary" instance=ExtResource( 16 )]
+transform = Transform( 0.2, 0, 0, 0, 0.25, 0, 0, 0, 0.0666667, 0.56351, -0.966405, -1.01007 )
+
+[node name="lamp" type="MeshInstance" parent="enviroment/apothecary/apothecary_out"]
+transform = Transform( 1, 0, 0, 0, 0.3, 0, 0, 0, 0.2, -2.47211, 4.77522, 0.0914726 )
+mesh = ExtResource( 15 )
+
+[node name="OmniLight" type="OmniLight" parent="enviroment/apothecary/apothecary_out/lamp"]
+transform = Transform( 1, 0, 0, 0, 3.33333, 0, 0, 0, 5, 0, 0, -5 )
+
+[node name="Door" parent="enviroment/apothecary" instance=ExtResource( 9 )]
+transform = Transform( -5.10367e-09, 0, 0.350275, 0, 0.383342, 0, -0.0316641, 0, -4.15225e-09, 0.0682325, -1, -1.01139 )
+scene = "res://scenes/maps/apothecary.tscn"
+this_scene = "town"
+
+[node name="exit" type="Spatial" parent="enviroment"]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 83.59, 0, 35.7087 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enviroment/exit"]
+transform = Transform( 6.3, 0, 0, 0, 34.641, 2.956, 0, -20, 5.11994, -14.389, 22.5937, 6.31429 )
+visible = false
+material_override = ExtResource( 8 )
+mesh = SubResource( 13 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="enviroment/exit"]
+transform = Transform( -6.3, 0, -4.76837e-07, -1.42548e-07, 28.2843, 4.18042, 2.38419e-07, 28.2843, -4.18042, -10.0948, 7.59373, -29.3915 )
+visible = false
+material_override = ExtResource( 8 )
+mesh = SubResource( 13 )
+
+[node name="StaticBody" type="StaticBody" parent="enviroment/exit"]
+
+[node name="CollisionShape" type="CollisionShape" parent="enviroment/exit/StaticBody"]
+transform = Transform( 0.994143, 0, -0.108086, 0, 1, 0, 0.108086, 0, 0.994143, -17.9508, 6.58105, -5.78999 )
+shape = SubResource( 33 )
+
+[node name="buildingSmall_1" parent="enviroment/exit" instance=ExtResource( 11 )]
+transform = Transform( 0.0226524, 0, 0.999744, 0, 1, 0, -0.999744, 0, 0.0226524, -17.4664, 2.43187e-05, -37.9404 )
+
+[node name="buildingSmall_2" parent="enviroment/exit" instance=ExtResource( 11 )]
+transform = Transform( 0.280634, 0, 0.959817, 0, 1, 0, -0.959817, 0, 0.280634, -17.0179, -0.605334, -2.71448 )
+
+[node name="buildingSmall_3" parent="enviroment/exit" instance=ExtResource( 12 )]
+transform = Transform( 0.16417, 0, -0.986434, 0, 1, 0, 0.986434, 0, 0.16417, -9.18259, 7.70598, -27.0462 )
+
+[node name="buildingSmall_4" parent="enviroment/exit" instance=ExtResource( 13 )]
+transform = Transform( -0.578216, 0, -0.815888, 0, 1, 0, 0.815888, 0, -0.578216, -9.77565, 7.24471, 13.0217 )
+
+[node name="buildingSmall_5" parent="enviroment/exit" instance=ExtResource( 12 )]
+transform = Transform( -0.115735, 0, 0.993281, 0, 1, 0, -0.993281, 0, -0.115735, -8.05307, 15.7067, -18.2133 )
+
+[node name="buildingSmall_6" parent="enviroment/exit" instance=ExtResource( 12 )]
+transform = Transform( -0.986457, 0, 0.164032, 0, 1, 0, -0.164032, 0, -0.986457, -9.34638, 15.3139, 11.6987 )
+
+[node name="buildingSmall_7" parent="enviroment/exit" instance=ExtResource( 13 )]
+transform = Transform( 0.967829, 0, -0.251613, 0, 1, 0, 0.251613, 0, 0.967829, -4.0317, 15.6859, -1.20693 )
+
+[node name="buildingSmall_10" parent="enviroment/exit" instance=ExtResource( 13 )]
+transform = Transform( 0.400749, 0, 0.916189, 0, 1, 0, -0.916189, 0, 0.400749, -11.4212, 23.3835, 6.18383 )
+
+[node name="buildingSmall_8" parent="enviroment/exit" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22645, 23.0256, -15.2662 )
+
+[node name="buildingSmall_9" parent="enviroment/exit" instance=ExtResource( 11 )]
+transform = Transform( -0.576148, 0, -0.817347, 0, 1, 0, 0.817347, 0, -0.576148, 0.159729, 23.0256, -7.63902 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="enviroment/exit"]
+transform = Transform( -8.10118, 1.50294e-07, -1.92595, -1.22895e-06, -1, 4.22541e-13, -0.783766, 1.45405e-08, 19.9071, -7.10977, 15.6742, -4.29732 )
+mesh = SubResource( 38 )
+material/0 = ExtResource( 22 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="enviroment/exit"]
+transform = Transform( -10, 1.50996e-07, -7.15256e-07, -1.50996e-06, -1, -7.94266e-14, -1.90735e-06, 2.84217e-14, 6.053, -2.71307, 23.0596, -7.46021 )
+mesh = SubResource( 39 )
+material/0 = ExtResource( 23 )
+
+[node name="bridge" type="MeshInstance" parent="enviroment"]
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 120, 0, 97.1889, 35.9113 )
+mesh = SubResource( 23 )
+material/0 = SubResource( 24 )
+
+[node name="bridge3" type="MeshInstance" parent="enviroment"]
+transform = Transform( 8.32022, 0, -66.5691, 0, 7.49135, 0, 5.54743, 0, 99.8426, -59.813, 63.6613, -4.32106 )
+mesh = SubResource( 23 )
+material/0 = SubResource( 24 )
+
+[node name="bridge2" type="MeshInstance" parent="enviroment"]
+transform = Transform( -4.37114e-07, 0, -120, 0, 5, 0, 10, 0, -5.24537e-06, -8.60928, 88.0844, 86.6902 )
+mesh = SubResource( 23 )
+material/0 = SubResource( 24 )
+
+[node name="box" type="Spatial" parent="enviroment"]
+
+[node name="cliffside" type="MeshInstance" parent="enviroment/box"]
+transform = Transform( 1, 0, 0, 0, 129.746, 0, 0, 0, 100, -91.9436, 122.444, 54 )
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+
+[node name="cliffside7" type="MeshInstance" parent="enviroment/box"]
+transform = Transform( -7.43094e-08, 0, -170, 0, 129.746, 0, 1, 0, -4.37114e-06, 45.0564, 122.444, -84 )
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+
+[node name="cliffside6" type="MeshInstance" parent="enviroment/box"]
+transform = Transform( 1, 0, 0, 0, 103.797, 0, 0, 0, 45, -91.9436, 84.1858, -78 )
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+
+[node name="cliffside2" type="MeshInstance" parent="enviroment/box"]
+transform = Transform( 1, 0, 0, 0, 129.746, 0, 0, 0, 100, 76.056, 122.444, 154.941 )
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+
+[node name="cliffside4" type="MeshInstance" parent="enviroment/box"]
+transform = Transform( 0.90038, 0, -30.4574, 0, 129.746, 0, 0.435105, 0, 63.0266, 114.203, 122.444, -48.1726 )
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+
+[node name="cliffside3" type="MeshInstance" parent="enviroment/box"]
+transform = Transform( -6.55671e-08, 0, 150, 0, 129.746, 0, -1, 0, -4.37114e-06, 7.0564, 122.444, 153 )
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+
+[node name="top" type="MeshInstance" parent="enviroment/box"]
+transform = Transform( -4.37114e-08, -129.746, 0, 1, -5.67139e-06, 0, 0, 0, 150, 7.0564, 142.016, 11.0685 )
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+
+[node name="cliffside8" type="MeshInstance" parent="enviroment/box"]
+transform = Transform( 1, 0, 0, 0, 55.2182, 0, 0, 0, 45, 77.7196, 83.7992, 33.4815 )
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+
+[node name="houses" type="Spatial" parent="enviroment"]
+
+[node name="buildingSmall_9" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.6885, 8.63075e-05, 23.182 )
+
+[node name="buildingSmall_1" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40.3472, 0, -18.1147 )
+
+[node name="buildingSmall_46" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 0.851398, 0, -0.524521, 0, 1, 0, 0.524521, 0, 0.851398, -26.1961, 0, -22.6451 )
+
+[node name="buildingSmall_3" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3472, 8, -18.1147 )
+
+[node name="buildingSmall_2" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -60.1614, 0, 8.63407 )
+
+[node name="buildingSmall_4" parent="enviroment/houses" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -25.6077, 8.00001, 30.933 )
+
+[node name="buildingSmall_7" parent="enviroment/houses" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.2755, 8.00001, 40.9437 )
+
+[node name="buildingSmall_8" parent="enviroment/houses" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.5866, 16, 42.1573 )
+
+[node name="buildingSmall_5" parent="enviroment/houses" instance=ExtResource( 13 )]
+transform = Transform( -2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, -47.645, 7.98425, 2.82432 )
+
+[node name="buildingSmall_6" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.63535, 0, 54.5161 )
+
+[node name="buildingSmall_10" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 0.104233, 0, 0.994553, 0, 1, 0, -0.994553, 0, 0.104233, -60.6205, 8.39233e-05, 28.1116 )
+
+[node name="buildingSmall_11" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.8544, 7.92591, 23.0663 )
+
+[node name="buildingSmall_12" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2272, 0, 26.8635 )
+
+[node name="buildingSmall_13" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.6368, 0, 26.8635 )
+
+[node name="buildingSmall_14" parent="enviroment/houses" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.1364, 7.94907, 25.2883 )
+
+[node name="buildingSmall_15" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 0.164944, 0, -0.986303, 0, 1, 0, 0.986303, 0, 0.164944, -72.0988, 3.62396e-05, 35.1049 )
+
+[node name="buildingSmall_16" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 0.164944, 0, -0.986303, 0, 1, 0, 0.986303, 0, 0.164944, -72.2095, 8.00004, 35.1049 )
+
+[node name="buildingSmall_17" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 0.164944, 0, -0.986303, 0, 1, 0, 0.986303, 0, 0.164944, -72.2095, 16, 35.1049 )
+
+[node name="buildingSmall_18" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 0.306892, 0, 0.951745, 0, 1, 0, -0.951745, 0, 0.306892, -86.3038, -0.0517858, -0.358252 )
+
+[node name="buildingSmall_47" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( -0.663273, 0, -0.748377, 0, 1, 0, 0.748377, 0, -0.663273, -61.6562, -0.0517858, 4.00732 )
+
+[node name="buildingSmall_19" parent="enviroment/houses" instance=ExtResource( 13 )]
+transform = Transform( 0.415884, 0, 0.909418, 0, 1, 0, -0.909418, 0, 0.415884, -81.1168, 7.95877, 2.92394 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enviroment/houses/buildingSmall_19"]
+transform = Transform( 0.0800428, 1.66608e-09, -7.08671, 3.67176e-07, -1, 0, -4.19924, -8.74069e-08, -0.135082, -1.35825, 0.00400257, 5.71356 )
+mesh = SubResource( 27 )
+skeleton = NodePath("../..")
+
+[node name="buildingSmall_20" parent="enviroment/houses" instance=ExtResource( 13 )]
+transform = Transform( -0.999981, 0, 0.00617839, 0, 1, 0, -0.00617839, 0, -0.999981, -67.7492, 7.95877, 2.92394 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enviroment/houses/buildingSmall_20"]
+transform = Transform( 0.0800428, 1.66608e-09, -7.08671, 3.67176e-07, -1, 0, -4.19924, -8.74069e-08, -0.135082, -1.38239, 0.00400257, 1.80368 )
+mesh = SubResource( 27 )
+skeleton = NodePath("../..")
+
+[node name="buildingSmall_21" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( -0.651437, 0, -0.758703, 0, 1, 0, 0.758703, 0, -0.651437, -75.294, 15.9126, 0.935631 )
+
+[node name="buildingSmall_22" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( -0.951299, 0, -0.30827, 0, 1, 0, 0.30827, 0, -0.951299, -50.6553, 16.0682, -1.7466 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enviroment/houses/buildingSmall_22"]
+transform = Transform( -5, 1.50996e-07, -1.02615e-07, -7.54979e-07, -1, 6.31996e-15, -2.38419e-07, 1.01368e-14, 2.152, -15.1185, -0.0169334, 12.8353 )
+mesh = SubResource( 32 )
+
+[node name="buildingSmall_23" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( -0.947974, 0, -0.318347, 0, 1, 0, 0.318347, 0, -0.947974, -22.482, 1.71661e-05, 71.154 )
+
+[node name="buildingSmall_24" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( -0.135716, 0, -0.990748, 0, 1, 0, 0.990748, 0, -0.135716, -16.6334, -0.0248299, 78.8151 )
+
+[node name="buildingSmall_25" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 0.920743, 0, -0.390169, 0, 1, 0, 0.390169, 0, 0.920743, -6.05078, -0.0248299, 75.0722 )
+
+[node name="buildingSmall_26" parent="enviroment/houses" instance=ExtResource( 13 )]
+transform = Transform( -0.920614, 0, 0.390474, 0, 1, 0, -0.390474, 0, -0.920614, -19.432, 8.04344, 80.2209 )
+
+[node name="buildingSmall_27" parent="enviroment/houses" instance=ExtResource( 13 )]
+transform = Transform( 0.15221, 0, 0.988348, 0, 1, 0, -0.988348, 0, 0.15221, -15.2528, 8.04344, 64.9535 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enviroment/houses"]
+transform = Transform( -6.8909, 0.000561555, -1.23105, 1.05697e-06, -0.999995, -0.0223576, -1.23106, -0.00314419, 6.89086, -12.6434, 8, 68.9514 )
+mesh = SubResource( 29 )
+
+[node name="buildingSmall_28" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.14317, 0.000137329, 99.4966 )
+
+[node name="buildingSmall_29" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 0.939669, 0.342086, 0, -0.342086, 0.939669, -22.16, 1.5926, 100.838 )
+
+[node name="buildingSmall_30" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 0.939669, 0.342086, 0, -0.342086, 0.939669, -22.16, 9.13701, 98.1805 )
+
+[node name="buildingSmall_31" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 0.939669, 0.342086, 0, -0.342086, 0.939669, -22.16, 16.5373, 95.4284 )
+
+[node name="buildingSmall_32" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( -0.0216404, 0, -0.999766, 0, 1, 0, 0.999766, 0, -0.0216404, -38.437, 9.63211e-05, 84.0404 )
+
+[node name="buildingSmall_34" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( -0.0216404, 0, -0.999766, -0.00886416, -0.999961, 0.000191869, -0.999727, 0.00886622, 0.0216396, -38.437, 16.2816, 80.628 )
+
+[node name="buildingSmall_33" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( -0.0216404, 0, -0.999766, -0.55175, 0.833924, 0.0119429, 0.833729, 0.551879, -0.0180465, -24.6113, -0.2325, 83.2736 )
+
+[node name="buildingSmall_35" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6954, 0, 96 )
+
+[node name="buildingSmall_36" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6954, 6.11133, 97.5611 )
+
+[node name="buildingSmall_37" parent="enviroment/houses" instance=ExtResource( 11 )]
+transform = Transform( 0.953365, 0, 0.301821, 0, 1, 0, -0.301821, 0, 0.953365, -50.4647, 0.0610147, 91.4718 )
+
+[node name="buildingSmall_38" parent="enviroment/houses" instance=ExtResource( 13 )]
+transform = Transform( -0.996291, 0, -0.086043, 0, 1, 0, 0.086043, 0, -0.996291, -7.45179, 8.06839, 104.663 )
+
+[node name="buildingSmall_39" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -70.5722, 7.84956, 39.319 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="enviroment/houses"]
+transform = Transform( -3.51249, 3.07072e-07, 0, -8.74228e-08, -1, 0, 0, 0, 2.17985, -69.9708, 7.91252, 33.4459 )
+mesh = SubResource( 30 )
+material/0 = ExtResource( 17 )
+
+[node name="buildingSmall_40" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7483, 9.88245e-05, 4.68434 )
+
+[node name="buildingSmall_41" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42.6748, 9.88245e-05, 5.16677 )
+
+[node name="buildingSmall_42" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 0.999935, 0, -0.0114141, 0, 1, 0, 0.0114141, 0, 0.999935, 35.5255, 7.91335, 4.31391 )
+
+[node name="buildingSmall_52" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 0.999935, 0, -0.0114141, 0, 1, 0, 0.0114141, 0, 0.999935, 27.5255, -0.0866499, -39.3633 )
+
+[node name="buildingSmall_53" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 0.999935, 0, -0.0114141, 0, 1, 0, 0.0114141, 0, 0.999935, 27.5255, -0.0866499, -27.5867 )
+
+[node name="buildingSmall_54" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 0.999935, 0, -0.0114141, 0, 1, 0, 0.0114141, 0, 0.999935, 27.5255, -0.0866499, -15.8242 )
+
+[node name="buildingSmall_55" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 0.999935, 0, -0.0114141, 0, 1, 0, 0.0114141, 0, 0.999935, 27.5255, -0.0866499, -5.46694 )
+
+[node name="buildingSmall_56" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 0.00204219, 0, -0.999998, 0, 1, 0, 0.999998, 0, 0.00204219, 27.5255, 8.13754, -23.0201 )
+
+[node name="buildingSmall_43" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( -0.679467, 0, 0.733706, 0, 1, 0, -0.733706, 0, -0.679467, 29.5312, 16.233, 2.30437 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enviroment/houses/buildingSmall_43"]
+transform = Transform( -8, 8.74228e-08, 0, -6.99382e-07, -1, 0, 0, 0, 6, -0.0391865, 0, 0.22957 )
+material_override = ExtResource( 17 )
+mesh = SubResource( 31 )
+
+[node name="buildingSmall_44" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 0.984844, 0, 0.173442, 0, 1, 0, -0.173442, 0, 0.984844, 42.9231, 16.233, 2.97243 )
+
+[node name="buildingSmall_45" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( -0.975018, 0, -0.222127, 0, 1, 0, 0.222127, 0, -0.975018, 45.9251, 8.21011, 2.68865 )
+
+[node name="mayor_out" parent="enviroment/houses" instance=ExtResource( 19 )]
+transform = Transform( 0.975711, 0, 0.219063, 0, 1, 0, -0.219063, 0, 0.975711, -67.3824, -0.124059, 3.53093 )
+
+[node name="buildingSmall_48" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 0.407422, 0, 0.91324, 0, 1, 0, -0.91324, 0, 0.407422, 8.53534, -1.93991, 91.1691 )
+
+[node name="buildingSmall_49" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 0.407422, 0, 0.91324, 0, 1, 0, -0.91324, 0, 0.407422, 10.2395, 3.68377, 91.9639 )
+
+[node name="buildingSmall_50" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 80.3414, -0.938109, 67.0169 )
+
+[node name="buildingSmall_51" parent="enviroment/houses" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 80.3414, -0.938109, 78.91 )
+
+[node name="tall_buildings" type="Spatial" parent="enviroment"]
+
+[node name="tall_building_1" parent="enviroment/tall_buildings" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -80, -4, 60 )
+
+[node name="tall_building_10" parent="enviroment/tall_buildings" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 5, -26 )
+
+[node name="tall_building_14" parent="enviroment/tall_buildings" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2595, 34.0534, 16.0374 )
+
+[node name="floor" type="MeshInstance" parent="enviroment/tall_buildings/tall_building_14"]
+transform = Transform( 10.4409, 0, 0, 0, 1, 0, 0, 0, 10.8224, 0, -1, 0 )
+mesh = SubResource( 26 )
+
+[node name="tall_building_2" parent="enviroment/tall_buildings" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8989, 1, 123.46 )
+
+[node name="tall_building_20" parent="enviroment/tall_buildings" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7293, 1, 123.802 )
+
+[node name="tall_building_3" parent="enviroment/tall_buildings" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 9.36603, 102.953 )
+
+[node name="tall_building_15" parent="enviroment/tall_buildings" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5009, -8.58279, 46.5788 )
+
+[node name="tall_building_16" parent="enviroment/tall_buildings" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4486, -8.58279, 67.8768 )
+
+[node name="tall_building_4" parent="enviroment/tall_buildings" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -54.8806, 5, 115.763 )
+
+[node name="tall_building_17" parent="enviroment/tall_buildings" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13767, 5.67591, 112.468 )
+
+[node name="tall_building_5" parent="enviroment/tall_buildings" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 69.9389, 1, 108.934 )
+
+[node name="tall_building_9" parent="enviroment/tall_buildings" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 1, 83 )
+
+[node name="tall_building_7" parent="enviroment/tall_buildings" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 76.6301, -1.41813, 3.71728 )
+
+[node name="tall_building_12" parent="enviroment/tall_buildings" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 76.909, 58.1873, 3.71728 )
+
+[node name="tall_building_6" parent="enviroment/tall_buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -75, 0, -27 )
+
+[node name="tall_building_13" parent="enviroment/tall_buildings" instance=ExtResource( 3 )]
+transform = Transform( 0.939551, 0, 0, 0, 1, 0, 0, 0, 0.93791, -75, 59.4076, -27 )
+
+[node name="tall_building_8" parent="enviroment/tall_buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.462, 0, -3.82143 )
+
+[node name="tall_building_11" parent="enviroment/tall_buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9477, 0, 118.203 )
+
+[node name="tall_building_19" parent="enviroment/tall_buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4238, 0, 105.126 )
+
+[node name="tall_building_18" parent="enviroment/tall_buildings" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9477, 58.567, 118.203 )
+
+[node name="lamps" type="Spatial" parent="enviroment"]
+
+[node name="lamp" type="Spatial" parent="enviroment/lamps"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="light" type="MeshInstance" parent="enviroment/lamps/lamp"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.76734, 0 )
+mesh = SubResource( 18 )
+skeleton = NodePath("../..")
+
+[node name="post" type="MeshInstance" parent="enviroment/lamps/lamp"]
+transform = Transform( 0.2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 2.95873, 0 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+
+[node name="head" type="MeshInstance" parent="enviroment/lamps/lamp"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 6, 0 )
+mesh = ExtResource( 15 )
+
+[node name="OmniLight" type="OmniLight" parent="enviroment/lamps/lamp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.03392, -0.0501204 )
+
+[node name="lamp2" type="Spatial" parent="enviroment/lamps"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.915, 0, -29.8908 )
+
+[node name="light" type="MeshInstance" parent="enviroment/lamps/lamp2"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.76734, 0 )
+mesh = SubResource( 18 )
+skeleton = NodePath("../..")
+
+[node name="post" type="MeshInstance" parent="enviroment/lamps/lamp2"]
+transform = Transform( 0.2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 2.95873, 0 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+
+[node name="head" type="MeshInstance" parent="enviroment/lamps/lamp2"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 6, 0 )
+mesh = ExtResource( 15 )
+
+[node name="OmniLight" type="OmniLight" parent="enviroment/lamps/lamp2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.89078, -0.0419903 )
+omni_range = 6.71875
+
+[node name="lamp3" type="Spatial" parent="enviroment/lamps"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9348, 0, 16.7161 )
+
+[node name="light" type="MeshInstance" parent="enviroment/lamps/lamp3"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.76734, 0 )
+mesh = SubResource( 18 )
+skeleton = NodePath("../..")
+
+[node name="post" type="MeshInstance" parent="enviroment/lamps/lamp3"]
+transform = Transform( 0.2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 2.95873, 0 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+
+[node name="head" type="MeshInstance" parent="enviroment/lamps/lamp3"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 6, 0 )
+mesh = ExtResource( 15 )
+
+[node name="OmniLight" type="OmniLight" parent="enviroment/lamps/lamp3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.99448, -0.0494747 )
+
+[node name="lamp4" type="Spatial" parent="enviroment/lamps"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -73.7092, 0, 13.6579 )
+
+[node name="light" type="MeshInstance" parent="enviroment/lamps/lamp4"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.76734, 0 )
+mesh = SubResource( 18 )
+skeleton = NodePath("../..")
+
+[node name="post" type="MeshInstance" parent="enviroment/lamps/lamp4"]
+transform = Transform( 0.2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 2.95873, 0 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+
+[node name="head" type="MeshInstance" parent="enviroment/lamps/lamp4"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 6, 0 )
+mesh = ExtResource( 15 )
+
+[node name="OmniLight" type="OmniLight" parent="enviroment/lamps/lamp4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158035, 5.85461, -0.0431099 )
+
+[node name="lamp5" type="Spatial" parent="enviroment/lamps"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.980304, 0, 46.3738 )
+
+[node name="light" type="MeshInstance" parent="enviroment/lamps/lamp5"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.76734, 0 )
+mesh = SubResource( 18 )
+skeleton = NodePath("../..")
+
+[node name="post" type="MeshInstance" parent="enviroment/lamps/lamp5"]
+transform = Transform( 0.2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 2.95873, 0 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+
+[node name="head" type="MeshInstance" parent="enviroment/lamps/lamp5"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 6, 0 )
+mesh = ExtResource( 15 )
+
+[node name="OmniLight" type="OmniLight" parent="enviroment/lamps/lamp5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.618482, 4.34094, -0.200943 )
+
+[node name="lamp6" type="Spatial" parent="enviroment/lamps"]
+transform = Transform( 1, 0, 0, 0, -0.799076, 0.601229, 0, -0.601229, -0.799076, -16.2051, 8.41826, 93.7681 )
+
+[node name="light" type="MeshInstance" parent="enviroment/lamps/lamp6"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3.76734, 0 )
+mesh = SubResource( 18 )
+skeleton = NodePath("../..")
+
+[node name="post" type="MeshInstance" parent="enviroment/lamps/lamp6"]
+transform = Transform( 0.2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 2.95873, 0 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+
+[node name="head" type="MeshInstance" parent="enviroment/lamps/lamp6"]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 6, 0 )
+mesh = ExtResource( 15 )
+
+[node name="OmniLight" type="OmniLight" parent="enviroment/lamps/lamp6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91375, 5.99535, 0.0447006 )
+omni_range = 7.78135
+
+[node name="generator" parent="enviroment" instance=ExtResource( 18 )]
+transform = Transform( 0.719863, 0, 1.86596, 0, 2, 0, -1.86596, 0, 0.719863, -25.0383, 0.0117064, -32.7282 )
+
+[node name="barracks" parent="enviroment" instance=ExtResource( 20 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.83176, -0.274033, 43.3404 )
+
+[node name="out" type="Spatial" parent="enviroment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 0, 33 )
+
+[node name="right" type="MeshInstance" parent="enviroment/out"]
+transform = Transform( -50, 8.74228e-08, 0, -2.42708e-06, -0.555251, -20.7921, -3.6354e-06, -0.831683, 13.8813, 34.6067, 17.6803, 14.9225 )
+mesh = SubResource( 34 )
+material/0 = ExtResource( 17 )
+
+[node name="left" type="MeshInstance" parent="enviroment/out"]
+transform = Transform( 50, 0, 0, 0, -0.606724, -19.8728, 0, 0.794913, -15.1681, 34.5031, 18.6967, -13.9234 )
+mesh = SubResource( 34 )
+material/0 = ExtResource( 17 )
+
+[node name="end" type="MeshInstance" parent="enviroment/out"]
+transform = Transform( -8.74228e-07, -1, 0, 20, -4.37114e-08, 0, 0, 0, 30, 82.2728, 17.8883, 0 )
+mesh = SubResource( 35 )
+material/0 = ExtResource( 21 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enviroment/out"]
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 5, 7.63383, 0.141341, 0 )
+mesh = SubResource( 36 )
+material/0 = ExtResource( 22 )
+
+[node name="hospital2" type="Spatial" parent="enviroment"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 69.0791, 0, 80.8111 )
+
+[node name="apothecary_out" parent="enviroment/hospital2" instance=ExtResource( 16 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.25101, -0.0243604, 16.4565 )
+
+[node name="buildingSmall_3" parent="enviroment/hospital2" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4582, 7.15256e-05, -3.33342 )
+
+[node name="buildingSmall_4" parent="enviroment/hospital2" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4582, 7.15256e-05, 6.66657 )
+
+[node name="buildingSmall_5" parent="enviroment/hospital2" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4582, 7.15256e-05, 23.7489 )
+
+[node name="buildingSmall_6" parent="enviroment/hospital2" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4653, 7.12872e-05, 33.7625 )
+
+[node name="buildingSmall_7" parent="enviroment/hospital2" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.0284, 8.00007, 35.2355 )
+
+[node name="buildingSmall_8" parent="enviroment/hospital2" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.0284, 8.00007, 21.2355 )
+
+[node name="buildingSmall_9" parent="enviroment/hospital2" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.0284, 8.00007, 7.23549 )
+
+[node name="StaticBody" type="StaticBody" parent="enviroment/hospital2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40765, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="enviroment/hospital2/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.604858, 0, 18.9506 )
+shape = SubResource( 37 )
+
+[node name="mayor" type="Position3D" parent="."]
+transform = Transform( -0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -67, 1, 6 )
+
+[node name="apothecary" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 1, 33 )
+
+[node name="basement" type="Position3D" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -51.1499, 1, 89 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+size = Vector2( 213, 160 )
+handle_input_locally = false
+render_target_update_mode = 3
+audio_listener_enable_3d = true
+
+[node name="player" parent="CanvasLayer/ViewportContainer/Viewport" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.914429, 0.544066, 5.99065 )
+
+[node name="npcs" type="Spatial" parent="."]
+
+[node name="captain" parent="npcs" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="researcher 1" parent="npcs" instance=ExtResource( 7 )]
+transform = Transform( -0.0515939, -0.000630371, -0.998668, -0.000533512, 1, -0.000603631, 0.998668, 0.000501636, -0.0515939, -20.2246, 0.187074, -31.9827 )
+
+[node name="researcher 2" parent="npcs" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -70.121, 0, 7.72585 )
+
+[node name="researcher 3" parent="npcs" instance=ExtResource( 7 )]
+transform = Transform( -0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -71.621, 0, 32.2258 )
+
+[node name="researcher 4" parent="npcs" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -50.621, 0, 86.2258 )
+
+[node name="guard 1" parent="npcs" instance=ExtResource( 7 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 56.6817, 0, 28.2016 )
+weaponEnabled = true
+
+[node name="guard 2" parent="npcs" instance=ExtResource( 7 )]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 64.6817, 0, 42.2016 )
+weaponEnabled = true
+
+[node name="guard 3" parent="npcs" instance=ExtResource( 7 )]
+transform = Transform( -0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 63.0817, 0, 38.2016 )
+weaponEnabled = true
+
+[node name="ballistics expert" parent="npcs" instance=ExtResource( 7 )]
+transform = Transform( 1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, 26.8168, 0, 63.5001 )
+
+[node name="medical researcher" parent="npcs" instance=ExtResource( 7 )]
+transform = Transform( -1, 0, 7.54979e-08, 0, 1, 0, -7.54979e-08, 0, -1, 50.2331, 0, 83.356 )
