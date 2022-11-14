@@ -69,7 +69,6 @@ func _process(delta):
 	elif(crosshair.color.to_html(false) != "ffffff"):
 		crosshair.color = "#ffffff"
 	
-
 		
 	if not is_on_floor():
 		fall.y -= gravity * delta
@@ -198,8 +197,15 @@ func startConversation(npcName):
 		new_dialog = Dialogic.start("lake")
 
 	if new_dialog != null:
-		Global.canvas.add_child(new_dialog)
+		createNewDialogue(new_dialog)
+		new_dialog.connect("timeline_end", self, "endConversation")
 
+func createNewDialogue(new_dialog):
+	preventMove = true
+	Global.canvas.add_child(new_dialog)
+	
+func endConversation(timeline_end):
+	preventMove = false
 
 func _on_timer_timeout():
 	tutorial.hide()
