@@ -50,6 +50,10 @@ func _process(delta):
 		else:
 			menu.hide()
 			Input.mouse_mode= Input.MOUSE_MODE_CAPTURED
+			
+	if Input.is_action_just_pressed("objectives"):
+		Global.openObjectives()
+
 	direction = Vector3()
 	
 	speed = default_speed

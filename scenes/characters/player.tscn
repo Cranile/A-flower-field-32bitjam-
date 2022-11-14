@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://SFX/footstep-01.ogg" type="AudioStream" id=2]
-[ext_resource path="res://scenes/menu.gd" type="Script" id=3]
+[ext_resource path="res://scripts/menu.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.5
@@ -99,8 +99,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -0.5
 margin_top = -0.5
-margin_right = 1.5
-margin_bottom = 1.5
+margin_right = 3.5
+margin_bottom = 3.5
 
 [node name="tutorial" type="Label" parent="head/Camera/UI"]
 visible = false
@@ -242,22 +242,34 @@ text = "textures"
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Label" type="Label" parent="head/Camera/UI/menu/options"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -20.0
-margin_right = 20.0
+[node name="ScrollContainer" type="ScrollContainer" parent="head/Camera/UI/menu/options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="head/Camera/UI/menu/options/ScrollContainer"]
+margin_right = 188.0
+margin_bottom = 205.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="optionsLabel" type="Label" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer"]
+margin_right = 188.0
 margin_bottom = 14.0
 text = "Options"
+align = 1
 
-[node name="mouse" type="Label" parent="head/Camera/UI/menu/options"]
-margin_left = 49.0
-margin_top = 28.0
-margin_right = 162.0
-margin_bottom = 42.0
+[node name="mouse" type="Control" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 188.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 25, 50 )
+
+[node name="mouse" type="Label" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/mouse"]
+margin_right = 200.0
+margin_bottom = 14.0
 text = "Mouse sensitivity"
 
-[node name="HSlider" type="HSlider" parent="head/Camera/UI/menu/options/mouse"]
+[node name="HSlider" type="HSlider" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/mouse/mouse"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -270,27 +282,109 @@ max_value = 10.0
 step = 0.2
 value = 1.0
 
-[node name="current" type="Label" parent="head/Camera/UI/menu/options/mouse"]
-margin_left = 36.0
-margin_top = 31.0
-margin_right = 76.0
-margin_bottom = 45.0
+[node name="current" type="Label" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/mouse/mouse"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = 26.0
+margin_right = 20.0
+margin_bottom = 40.0
 text = "0.5"
 align = 1
 
-[node name="min" type="Label" parent="head/Camera/UI/menu/options/mouse"]
-margin_left = -5.0
+[node name="min" type="Label" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/mouse/mouse"]
+margin_left = 39.0
 margin_top = 17.0
-margin_right = 3.0
+margin_right = 47.0
 margin_bottom = 31.0
 text = "0"
 
-[node name="max" type="Label" parent="head/Camera/UI/menu/options/mouse"]
-margin_left = 108.0
-margin_top = 17.0
-margin_right = 148.0
-margin_bottom = 31.0
+[node name="max" type="Label" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/mouse/mouse"]
+margin_left = 151.0
+margin_top = 16.0
+margin_right = 191.0
+margin_bottom = 30.0
 text = "10"
+
+[node name="fullscreen" type="Control" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 188.0
+margin_bottom = 97.0
+rect_min_size = Vector2( 25, 25 )
+
+[node name="full" type="Button" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/fullscreen"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -9.5
+margin_right = 54.0
+margin_bottom = 10.5
+text = "FullScreen"
+
+[node name="win" type="Button" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/fullscreen"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -10.0
+margin_bottom = 10.0
+text = "Windowed"
+
+[node name="resolution" type="Control" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer"]
+margin_top = 101.0
+margin_right = 188.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 25, 75 )
+
+[node name="gameRes" type="Label" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/resolution"]
+margin_right = 111.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Game resolution:"
+autowrap = true
+
+[node name="size" type="OptionButton" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/resolution"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -97.0
+margin_bottom = 20.0
+text = "640x480"
+items = [ "256x448", null, false, 0, null, "640x480", null, false, 1, null, "1280x960", null, false, 2, null, "1920x1080", null, false, 3, null ]
+selected = 1
+
+[node name="gameRes2" type="Label" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/resolution"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -31.0
+margin_right = 111.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "window resolution:"
+autowrap = true
+
+[node name="size2" type="OptionButton" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/resolution"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -97.0
+margin_top = -20.0
+text = "1280x960"
+items = [ "256x448", null, false, 0, null, "640x480", null, false, 1, null, "1280x960", null, false, 2, null, "1920x1080", null, false, 3, null ]
+selected = 2
+
+[node name="dither" type="Control" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer"]
+margin_top = 180.0
+margin_right = 188.0
+margin_bottom = 205.0
+rect_min_size = Vector2( 0, 25 )
+
+[node name="dither" type="CheckBox" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/dither"]
+margin_right = 24.0
+margin_bottom = 24.0
+pressed = true
+text = "dither"
 
 [node name="RayCast" type="RayCast" parent="head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.253269, -0.415218 )
@@ -323,8 +417,13 @@ anims/blackout_end = SubResource( 4 )
 [connection signal="button_up" from="head/Camera/UI/menu/credits/footsteps" to="head/Camera/UI/menu" method="_on_footsteps_button_up"]
 [connection signal="button_up" from="head/Camera/UI/menu/credits/base model" to="head/Camera/UI/menu" method="_on_base_model_button_up"]
 [connection signal="button_up" from="head/Camera/UI/menu/credits/textures" to="head/Camera/UI/menu" method="_on_textures_button_up"]
-[connection signal="drag_ended" from="head/Camera/UI/menu/options/mouse/HSlider" to="head/Camera/UI/menu" method="_on_HSlider_drag_ended"]
-[connection signal="value_changed" from="head/Camera/UI/menu/options/mouse/HSlider" to="head/Camera/UI/menu" method="_on_HSlider_value_changed"]
+[connection signal="drag_ended" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/mouse/mouse/HSlider" to="head/Camera/UI/menu" method="_on_HSlider_drag_ended"]
+[connection signal="value_changed" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/mouse/mouse/HSlider" to="head/Camera/UI/menu" method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/fullscreen/full" to="head/Camera/UI/menu" method="_on_full_pressed"]
+[connection signal="pressed" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/fullscreen/win" to="head/Camera/UI/menu" method="_on_win_pressed"]
+[connection signal="item_selected" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/resolution/size" to="head/Camera/UI/menu" method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/resolution/size2" to="head/Camera/UI/menu" method="_on_size2_item_selected"]
+[connection signal="pressed" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/dither/dither" to="head/Camera/UI/menu" method="_on_dither_pressed"]
 [connection signal="gameplay_entered" from="head/RayCast" to="." method="_on_RayCast_gameplay_entered"]
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
