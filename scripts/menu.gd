@@ -60,12 +60,17 @@ func _on_textures_button_up():
 
 func _on_HSlider_value_changed(value):
 	$options/ScrollContainer/VBoxContainer/mouse/mouse/current.text = String( value )
-	pass # Replace with function body.
-
-
-func _on_HSlider_drag_ended(value_changed):
 	get_owner().mouse_sensitivity = float($options/ScrollContainer/VBoxContainer/mouse/mouse/current.text)
 	Global.mouse_sensitivity = float($options/ScrollContainer/VBoxContainer/mouse/mouse/current.text)
+	pass # Replace with function body.
+
+func _on_masterSlide_value_changed(value):
+	if(value == 0):
+		AudioServer.set_bus_mute(0,true)
+		return
+	AudioServer.set_bus_mute(0,false)
+	AudioServer.set_bus_volume_db(0,value)
+	
 	pass # Replace with function body.
 
 func _on_full_pressed():
@@ -95,7 +100,8 @@ func _on_size2_item_selected(index):
 
 func _on_dither_pressed():
 	#disable dither
-	print("pressed")
 	Global.ditherChange( $options/ScrollContainer/VBoxContainer/dither/dither.pressed )
 	pass # Replace with function body.
+
+
 

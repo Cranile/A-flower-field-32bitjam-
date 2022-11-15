@@ -28,7 +28,6 @@ func toggle():
 func updateData():
 	roomCount = Global.rooms_remain
 	currentRoomMax = Global.getItemsTotal()
-	print(currentRoomMax)
 	currentRoomActual = Global.getItemsLeft()
 	inspected = 0
 	roomCountNode.text = "rooms inspected "+String(roomCount)+"/3"

@@ -35,8 +35,6 @@ func createTimer():
 
 func changeMap():
 	Global.from_scene = this_scene
-	print("scene is: ",scene)
-	print("this is at:",this_scene)
 	get_tree().change_scene(scene)
 	pass
 

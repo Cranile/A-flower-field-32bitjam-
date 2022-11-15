@@ -39,7 +39,7 @@ func _ready():
 	pass # Replace with function body.
 
 func breakWall():
-	print("call break wall")
+
 	wall_state = false
 	emit_signal("wall_broken")
 	
@@ -115,13 +115,11 @@ func inspect(item):
 			apoDone = true
 	
 	total_items_remain = important_items_apo.size() + important_items_mayor.size() + important_items_basement.size()
-	print("left: ",total_items_remain)
+	
 	if(total_items_remain <= 0):
 		end = true
-		print("end")
 
 func openObjectives():
-	print("open objectives")
 	get_node("/root/"+current_scene+"/CanvasLayer/ViewportContainer/objectives").toggle()
 
 func ditherChange(param):

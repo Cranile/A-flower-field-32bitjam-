@@ -79,10 +79,8 @@ func _process(delta):
 		if( target.is_in_group("npc") ):
 			startConversation(target.get_owner().name)
 		elif( target.is_in_group("door") ):
-			print("door")
 			target.changeScene()
 		elif( target.is_in_group("object") ):
-			print(target.get_parent().name)
 			startConversation(target.get_parent().name)
 	
 	if Input.is_action_just_pressed("sprint"):

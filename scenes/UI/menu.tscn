@@ -1,0 +1,286 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/menu.gd" type="Script" id=1]
+
+[node name="menu" type="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -80.0
+margin_right = 100.0
+margin_bottom = 80.0
+color = Color( 0.0823529, 0.0745098, 0.0745098, 1 )
+script = ExtResource( 1 )
+
+[node name="main" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="main"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Menu"
+
+[node name="exit" type="Button" parent="main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = 42.0
+margin_right = 15.0
+margin_bottom = 62.0
+text = "Exit"
+
+[node name="credits" type="Button" parent="main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = 5.0
+margin_right = 25.0
+margin_bottom = 25.0
+text = "Credits"
+
+[node name="options" type="Button" parent="main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -35.0
+margin_top = -37.0
+margin_right = 28.0
+margin_bottom = -17.0
+text = "Options"
+
+[node name="credits" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="credits"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Credits"
+
+[node name="dither" type="LinkButton" parent="credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = -50.0
+margin_right = 22.0
+margin_bottom = -36.0
+focus_mode = 2
+text = "Dither"
+
+[node name="footsteps" type="LinkButton" parent="credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -28.0
+margin_top = -27.0
+margin_right = 32.0
+margin_bottom = -13.0
+focus_mode = 2
+text = "footsteps"
+
+[node name="base model" type="LinkButton" parent="credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -5.0
+margin_right = 58.0
+margin_bottom = 9.0
+focus_mode = 2
+text = "Base model (NPC)"
+
+[node name="textures" type="LinkButton" parent="credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = 20.0
+margin_right = 28.0
+margin_bottom = 34.0
+focus_mode = 2
+text = "textures"
+
+[node name="options" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options/ScrollContainer"]
+margin_right = 200.0
+margin_bottom = 205.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="optionsLabel" type="Label" parent="options/ScrollContainer/VBoxContainer"]
+margin_right = 188.0
+margin_bottom = 14.0
+text = "Options"
+align = 1
+
+[node name="mouse" type="Control" parent="options/ScrollContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 188.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 25, 50 )
+
+[node name="mouse" type="Label" parent="options/ScrollContainer/VBoxContainer/mouse"]
+margin_right = 200.0
+margin_bottom = 14.0
+text = "Mouse sensitivity"
+
+[node name="HSlider" type="HSlider" parent="options/ScrollContainer/VBoxContainer/mouse/mouse"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.5
+margin_top = 9.0
+margin_right = 49.5
+margin_bottom = 25.0
+max_value = 10.0
+step = 0.2
+value = 1.0
+
+[node name="current" type="Label" parent="options/ScrollContainer/VBoxContainer/mouse/mouse"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = 26.0
+margin_right = 20.0
+margin_bottom = 40.0
+text = "0.5"
+align = 1
+
+[node name="min" type="Label" parent="options/ScrollContainer/VBoxContainer/mouse/mouse"]
+margin_left = 39.0
+margin_top = 17.0
+margin_right = 47.0
+margin_bottom = 31.0
+text = "0"
+
+[node name="max" type="Label" parent="options/ScrollContainer/VBoxContainer/mouse/mouse"]
+margin_left = 151.0
+margin_top = 16.0
+margin_right = 191.0
+margin_bottom = 30.0
+text = "10"
+
+[node name="fullscreen" type="Control" parent="options/ScrollContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 188.0
+margin_bottom = 97.0
+rect_min_size = Vector2( 25, 25 )
+
+[node name="full" type="Button" parent="options/ScrollContainer/VBoxContainer/fullscreen"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -9.5
+margin_right = 54.0
+margin_bottom = 10.5
+text = "FullScreen"
+
+[node name="win" type="Button" parent="options/ScrollContainer/VBoxContainer/fullscreen"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -79.0
+margin_top = -10.0
+margin_bottom = 10.0
+text = "Windowed"
+
+[node name="resolution" type="Control" parent="options/ScrollContainer/VBoxContainer"]
+margin_top = 101.0
+margin_right = 188.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 25, 75 )
+
+[node name="gameRes" type="Label" parent="options/ScrollContainer/VBoxContainer/resolution"]
+margin_right = 111.0
+margin_bottom = 31.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Game resolution:"
+autowrap = true
+
+[node name="size" type="OptionButton" parent="options/ScrollContainer/VBoxContainer/resolution"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -97.0
+margin_bottom = 20.0
+text = "640x480"
+items = [ "256x448", null, false, 0, null, "640x480", null, false, 1, null, "1280x960", null, false, 2, null, "1920x1080", null, false, 3, null ]
+selected = 1
+
+[node name="gameRes2" type="Label" parent="options/ScrollContainer/VBoxContainer/resolution"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -31.0
+margin_right = 111.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "window resolution:"
+autowrap = true
+
+[node name="size2" type="OptionButton" parent="options/ScrollContainer/VBoxContainer/resolution"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -97.0
+margin_top = -20.0
+text = "1280x960"
+items = [ "256x448", null, false, 0, null, "640x480", null, false, 1, null, "1280x960", null, false, 2, null, "1920x1080", null, false, 3, null ]
+selected = 2
+
+[node name="dither" type="Control" parent="options/ScrollContainer/VBoxContainer"]
+margin_top = 180.0
+margin_right = 188.0
+margin_bottom = 205.0
+rect_min_size = Vector2( 0, 25 )
+
+[node name="dither" type="CheckBox" parent="options/ScrollContainer/VBoxContainer/dither"]
+margin_right = 24.0
+margin_bottom = 24.0
+pressed = true
+text = "dither"
+
+[connection signal="visibility_changed" from="." to="." method="_on_menu_visibility_changed"]
+[connection signal="button_up" from="main/exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="main/credits" to="." method="_on_credits_button_up"]
+[connection signal="button_up" from="main/options" to="." method="_on_options_button_up"]
+[connection signal="button_up" from="credits/dither" to="." method="_on_dither_button_up"]
+[connection signal="button_up" from="credits/footsteps" to="." method="_on_footsteps_button_up"]
+[connection signal="button_up" from="credits/base model" to="." method="_on_base_model_button_up"]
+[connection signal="button_up" from="credits/textures" to="." method="_on_textures_button_up"]
+[connection signal="drag_ended" from="options/ScrollContainer/VBoxContainer/mouse/mouse/HSlider" to="." method="_on_HSlider_drag_ended"]
+[connection signal="value_changed" from="options/ScrollContainer/VBoxContainer/mouse/mouse/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="options/ScrollContainer/VBoxContainer/fullscreen/full" to="." method="_on_full_pressed"]
+[connection signal="pressed" from="options/ScrollContainer/VBoxContainer/fullscreen/win" to="." method="_on_win_pressed"]
+[connection signal="item_selected" from="options/ScrollContainer/VBoxContainer/resolution/size" to="." method="_on_OptionButton_item_selected"]
+[connection signal="item_selected" from="options/ScrollContainer/VBoxContainer/resolution/size2" to="." method="_on_size2_item_selected"]
+[connection signal="pressed" from="options/ScrollContainer/VBoxContainer/dither/dither" to="." method="_on_dither_pressed"]

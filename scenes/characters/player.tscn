@@ -248,7 +248,7 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="head/Camera/UI/menu/options/ScrollContainer"]
 margin_right = 188.0
-margin_bottom = 205.0
+margin_bottom = 269.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -386,6 +386,41 @@ margin_bottom = 24.0
 pressed = true
 text = "dither"
 
+[node name="audio" type="Control" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer"]
+margin_top = 209.0
+margin_right = 188.0
+margin_bottom = 269.0
+rect_min_size = Vector2( 0, 60 )
+
+[node name="Label" type="Label" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/audio"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Master Audio"
+
+[node name="masterSlide" type="HSlider" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/audio"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -15.0
+margin_right = 60.0
+margin_bottom = 8.0
+min_value = -30.0
+max_value = 0.0
+
+[node name="audioLabel" type="Label" parent="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/audio"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = 0.974001
+margin_right = 20.0
+margin_bottom = 14.974
+text = "100"
+
 [node name="RayCast" type="RayCast" parent="head"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.253269, -0.415218 )
 enabled = true
@@ -399,7 +434,7 @@ one_shot = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
-unit_db = -3.0
+bus = "Effects"
 
 [node name="footstep_timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -417,13 +452,13 @@ anims/blackout_end = SubResource( 4 )
 [connection signal="button_up" from="head/Camera/UI/menu/credits/footsteps" to="head/Camera/UI/menu" method="_on_footsteps_button_up"]
 [connection signal="button_up" from="head/Camera/UI/menu/credits/base model" to="head/Camera/UI/menu" method="_on_base_model_button_up"]
 [connection signal="button_up" from="head/Camera/UI/menu/credits/textures" to="head/Camera/UI/menu" method="_on_textures_button_up"]
-[connection signal="drag_ended" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/mouse/mouse/HSlider" to="head/Camera/UI/menu" method="_on_HSlider_drag_ended"]
 [connection signal="value_changed" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/mouse/mouse/HSlider" to="head/Camera/UI/menu" method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/fullscreen/full" to="head/Camera/UI/menu" method="_on_full_pressed"]
 [connection signal="pressed" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/fullscreen/win" to="head/Camera/UI/menu" method="_on_win_pressed"]
 [connection signal="item_selected" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/resolution/size" to="head/Camera/UI/menu" method="_on_OptionButton_item_selected"]
 [connection signal="item_selected" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/resolution/size2" to="head/Camera/UI/menu" method="_on_size2_item_selected"]
 [connection signal="pressed" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/dither/dither" to="head/Camera/UI/menu" method="_on_dither_pressed"]
+[connection signal="value_changed" from="head/Camera/UI/menu/options/ScrollContainer/VBoxContainer/audio/masterSlide" to="head/Camera/UI/menu" method="_on_masterSlide_value_changed"]
 [connection signal="gameplay_entered" from="head/RayCast" to="." method="_on_RayCast_gameplay_entered"]
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
