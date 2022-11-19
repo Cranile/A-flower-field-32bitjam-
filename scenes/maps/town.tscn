@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://scenes/UI/CanvasLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/mossyBrick.jpg" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/characters/Npc.tscn" type="PackedScene" id=7]
 [ext_resource path="res://mainBuildingsMat.tres" type="Material" id=8]
 [ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/weaponsBox.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/buildings/buildingSmall_1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/buildings/buildingSmall_2.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/buildings/buildingSmall_3.tscn" type="PackedScene" id=13]
@@ -23,7 +24,9 @@
 [ext_resource path="res://shaders/orange.tres" type="Material" id=22]
 [ext_resource path="res://shaders/dark_brown.tres" type="Material" id=23]
 [ext_resource path="res://textures/concrete1.jpg" type="Texture" id=24]
-[ext_resource path="res://textures/sandstone256.jpg" type="Texture" id=25]
+[ext_resource path="res://scenes/plazaGround.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scenes/closedBox.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenes/truck.tscn" type="PackedScene" id=27]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -43,15 +46,6 @@ albedo_color = Color( 0.14902, 0.384314, 0.839216, 1 )
 
 [sub_resource type="BoxShape" id=28]
 extents = Vector3( 34.4378, 14.5562, 1 )
-
-[sub_resource type="PlaneMesh" id=6]
-
-[sub_resource type="SpatialMaterial" id=42]
-flags_world_triplanar = true
-albedo_color = Color( 0.992157, 1, 0.878431, 1 )
-albedo_texture = ExtResource( 25 )
-uv1_scale = Vector3( 0.3, 0.3, 0.3 )
-uv1_triplanar = true
 
 [sub_resource type="CubeMesh" id=8]
 
@@ -126,6 +120,12 @@ material = SubResource( 22 )
 [sub_resource type="BoxShape" id=37]
 extents = Vector3( 1, 1, 24.5256 )
 
+[sub_resource type="BoxShape" id=44]
+extents = Vector3( 1, 1, 1.25139 )
+
+[sub_resource type="BoxShape" id=45]
+extents = Vector3( 1, 1, 2.83784 )
+
 [node name="town" type="Spatial"]
 script = ExtResource( 6 )
 
@@ -146,6 +146,9 @@ material/0 = SubResource( 14 )
 transform = Transform( 140, 0, 0, 0, 2, 0, 0, 0, 140, 49, -2, 95 )
 shape = SubResource( 12 )
 
+[node name="plazaGround" parent="enviroment" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52371, 0.0676241, -25.4658 )
+
 [node name="lake" type="MeshInstance" parent="enviroment"]
 transform = Transform( 240, 0, 0, 0, 1, 0, 0, 0, 34, 37.8123, -5.23521, -77.778 )
 mesh = SubResource( 9 )
@@ -157,12 +160,6 @@ collision_layer = 33
 
 [node name="CollisionShape" type="CollisionShape" parent="enviroment/lake/lakewall"]
 shape = SubResource( 28 )
-
-[node name="plazaGround" type="MeshInstance" parent="enviroment"]
-transform = Transform( 22.4, 0, 0, 0, 0.2, 0, 0, 0, 19.6, -2.3101, 0.0228915, -25.4745 )
-mesh = SubResource( 6 )
-skeleton = NodePath("../StaticBody/ground")
-material/0 = SubResource( 42 )
 
 [node name="market" type="MeshInstance" parent="enviroment"]
 transform = Transform( 4.32, 0, 0, 0, 5.6, 0, 0, 0, 22.95, 23.8232, 6.2071, -22.9541 )
@@ -781,7 +778,7 @@ mesh = SubResource( 35 )
 material/0 = ExtResource( 21 )
 
 [node name="MeshInstance" type="MeshInstance" parent="enviroment/out"]
-transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 5, 7.63383, 0.141341, 0 )
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 5, 7.634, 0.05, 0 )
 mesh = SubResource( 36 )
 material/0 = ExtResource( 22 )
 
@@ -818,6 +815,38 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40765, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="enviroment/hospital2/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.604858, 0, 18.9506 )
 shape = SubResource( 37 )
+
+[node name="barracksDeco" type="Spatial" parent="enviroment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6315, 0, 68.2814 )
+
+[node name="weaponsBox2" parent="enviroment/barracksDeco" instance=ExtResource( 10 )]
+transform = Transform( 0.749557, 0, 0.66194, 0, 1, 0, -0.66194, 0, 0.749557, -0.601631, -0.00627613, -9.74695 )
+
+[node name="StaticBody2" type="StaticBody" parent="enviroment/barracksDeco"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.409142, -11.7031 )
+
+[node name="CollisionShape" type="CollisionShape" parent="enviroment/barracksDeco/StaticBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.476545, 0.81172, 1.97824 )
+shape = SubResource( 44 )
+
+[node name="weaponsBox" parent="enviroment/barracksDeco" instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.92555, 0.000925064, 1.02928 )
+
+[node name="closedBox" parent="enviroment/barracksDeco" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.478048, 0, -0.749634 )
+
+[node name="closedBox2" parent="enviroment/barracksDeco" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.921774, 0, -2.44838 )
+
+[node name="closedBox3" parent="enviroment/barracksDeco" instance=ExtResource( 26 )]
+transform = Transform( 0.956605, 0, 0.291387, 0, 1, 0, -0.291387, 0, 0.956605, -0.736454, 1.764, -1.57786 )
+
+[node name="StaticBody" type="StaticBody" parent="enviroment/barracksDeco"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204571, -0.794376 )
+
+[node name="CollisionShape" type="CollisionShape" parent="enviroment/barracksDeco/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.476545, 0.81172, 0.320244 )
+shape = SubResource( 45 )
 
 [node name="mayor" type="Position3D" parent="."]
 transform = Transform( -0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -67, 1, 6 )
@@ -864,3 +893,6 @@ transform = Transform( 1.19209e-07, 0, 1, 0, 1, 0, -1, 0, 1.19209e-07, 26.8168, 
 
 [node name="medical researcher" parent="npcs" instance=ExtResource( 7 )]
 transform = Transform( -1, 0, 7.54979e-08, 0, 1, 0, -7.54979e-08, 0, -1, 50.2331, 0, 83.356 )
+
+[node name="truck" parent="." instance=ExtResource( 27 )]
+transform = Transform( 0.953069, 0, -0.302752, 0, 1, 0, 0.302752, 0, 0.953069, 29.265, 6.7234e-05, 18.5088 )

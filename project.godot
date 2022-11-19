@@ -119,6 +119,9 @@ texture={
 texture_3d={
 "flags/filter": false
 }
+texture_array={
+"flags/filter": false
+}
 
 [input]
 

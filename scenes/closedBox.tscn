@@ -1,0 +1,20 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://textures/metal256.jpg" type="Texture" id=1]
+[ext_resource path="res://shaders/black.tres" type="Material" id=2]
+[ext_resource path="res://textures/wood256.jpg" type="Texture" id=3]
+[ext_resource path="res://3Dmodels/closedBox.glb" type="PackedScene" id=4]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 3 )
+
+[node name="closedBox" instance=ExtResource( 4 )]
+
+[node name="boxclosed" parent="." index="0"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+material/0 = SubResource( 1 )
+material/1 = ExtResource( 2 )
+material/2 = SubResource( 2 )

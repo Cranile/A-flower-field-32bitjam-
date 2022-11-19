@@ -10,6 +10,18 @@
 			"character": "character-1666906225.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
+			"text": "If you get lost or want to know what you found just check your PDA"
+		},
+		{
+			"character": "character-1667180261.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "While out of dialog, press \"F\" to open your PDA"
+		},
+		{
+			"character": "character-1666906225.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
 			"text": "There is three main locations you need to search, the first two are to my left just after the alley, the last is behind you, also followed by an alley. It seems the architects of these area really liked alleys. . ."
 		},
 		{

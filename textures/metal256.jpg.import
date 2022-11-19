@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/bricks256.jpg-216e63700815be78936a066f03cd7abf.s3tc.stex"
-path.etc2="res://.import/bricks256.jpg-216e63700815be78936a066f03cd7abf.etc2.stex"
+path.s3tc="res://.import/metal256.jpg-1ebf584d9754edcd619a1034c8cf121f.s3tc.stex"
+path.etc2="res://.import/metal256.jpg-1ebf584d9754edcd619a1034c8cf121f.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/bricks256.jpg"
-dest_files=[ "res://.import/bricks256.jpg-216e63700815be78936a066f03cd7abf.s3tc.stex", "res://.import/bricks256.jpg-216e63700815be78936a066f03cd7abf.etc2.stex" ]
+source_file="res://textures/metal256.jpg"
+dest_files=[ "res://.import/metal256.jpg-1ebf584d9754edcd619a1034c8cf121f.s3tc.stex", "res://.import/metal256.jpg-1ebf584d9754edcd619a1034c8cf121f.etc2.stex" ]
 
 [params]
 

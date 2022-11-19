@@ -51,14 +51,14 @@ func _process(delta):
 			menu.hide()
 			Input.mouse_mode= Input.MOUSE_MODE_CAPTURED
 			
-	if Input.is_action_just_pressed("objectives"):
-		Global.openObjectives()
 
 	direction = Vector3()
 	
 	speed = default_speed
 	if(preventMove):
 		return
+	if Input.is_action_just_pressed("objectives"):
+		Global.openObjectives()
 	
 	if raycast.is_colliding():
 		crosshair.color = "#e02c2c"
